@@ -65,12 +65,14 @@ abstract class XheetahResource extends Resource
     public static function label()
     {
         $computedLabel = str_plural(snake_case(collect(explode('\\', get_called_class()))->pop()));
+
         return trans("xheetah-nova::resources.{$computedLabel}.plural");
     }
 
     public static function singularLabel()
     {
         $computedLabel = str_plural(snake_case(collect(explode('\\', get_called_class()))->pop()));
+
         return xheetah_trans("resources.{$computedLabel}.singular");
     }
 

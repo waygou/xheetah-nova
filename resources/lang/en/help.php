@@ -27,9 +27,9 @@ return [
     ],
 
     'clients' => [
-        'contact_email'  => 'An email will be sent to the new User to create a password. Email will be used as username to login on the backoffice',
-        'api_token'      => 'Private token key used for all API transactions',
-        'name'           => 'Client commercial name',
-        'contract_starts_at' => 'Start date where the Client can request deliveries'
+        'contact_email'      => 'An email will be sent to the new User to create a password. Email will be used as username to login on the backoffice',
+        'api_token'          => 'Private token key used for all API transactions',
+        'name'               => 'Client commercial name',
+        'contract_starts_at' => 'Start date where the Client can request deliveries',
     ],
 ];

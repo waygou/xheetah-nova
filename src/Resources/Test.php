@@ -4,8 +4,8 @@ namespace Waygou\XheetahNova\Resources;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Waygou\XheetahNova\Abstracts\XheetahResource;
 use Waygou\Xheetah\Models\Address;
+use Waygou\XheetahNova\Abstracts\XheetahResource;
 use Waygou\XheetahNovaUI\Components\Fields\BelongsTo;
 use Waygou\XheetahNovaUI\Components\Fields\Text;
 use Waygou\XheetahNovaUI\Components\Fields\Topic;
