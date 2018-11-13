@@ -1,0 +1,47 @@
+{
+    "name": "waygou/xheetah-nova",
+    "description": "Xheetah - Admin backoffice for Nova.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "require-dev": {
+    },
+    "require": {
+        "php": ">=7.1.0",
+        "waygou/xheetah": "dev-master",
+        "laraning/nova-time-field": "dev-master",
+        "tightenco/nova-releases": "^0.2",
+        "inspheric/nova-email-field": "^1.2",
+        "orlyapps/nova-changelog": "^0.0.2",
+        "ebess/nova-collapsible-sidebar": "^0.1.0",
+        "titasgailius/search-relations": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Waygou\\XheetahNova\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Waygou\\XheetahNova\\ToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "authors": [
+        {
+            "name": "Waygou",
+            "email": "bruno.falcao@waygou.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
