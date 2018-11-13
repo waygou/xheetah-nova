@@ -4,14 +4,11 @@ namespace Waygou\XheetahNova\Resources;
 
 use Illuminate\Http\Request;
 use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
-use Waygou\XheetahNovaUI\Components\Fields\Map;
-use Waygou\XheetahNovaUI\Components\Fields\Place;
 use Waygou\XheetahNovaUI\Components\Fields\Text;
 use Waygou\XheetahNovaUI\Components\Fields\Topic;
 

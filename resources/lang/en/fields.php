@@ -100,7 +100,7 @@ return [
         'contact_name'       => 'Contact Name',
         'contact_email'      => 'Contact Email',
         'contact_phone'      => 'Contact Phone',
-        'api_token'          => 'API Token'
+        'api_token'          => 'API Token',
     ],
 
     'addresses' => [
