@@ -16,7 +16,8 @@
         "inspheric/nova-email-field": "^1.2",
         "orlyapps/nova-changelog": "^0.0.2",
         "ebess/nova-collapsible-sidebar": "^0.1.0",
-        "titasgailius/search-relations": "^1.0"
+        "titasgailius/search-relations": "^1.0",
+        "waygou/nova-ux": "dev-master"
     },
     "autoload": {
         "psr-4": {
