@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Waygou\XheetahNova\Abstracts\XheetahResource;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
+use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class ServiceType extends XheetahResource
 {

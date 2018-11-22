@@ -8,9 +8,9 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
-use Waygou\XheetahNova\Abstracts\XheetahResource;
 use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\NovaUx\Components\Fields\Topic;
+use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class Client extends XheetahResource
 {
