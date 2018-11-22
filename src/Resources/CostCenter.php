@@ -7,10 +7,10 @@ use Inspheric\Fields\Email;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
-use Waygou\XheetahNova\Abstracts\XheetahResource;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\NovaUx\Components\Fields\Textarea;
+use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class CostCenter extends XheetahResource
 {

@@ -7,8 +7,8 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Waygou\XheetahNova\Abstracts\XheetahResource;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
+use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class Vehicle extends XheetahResource
 {

@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphTo;
-use Waygou\XheetahNova\Abstracts\XheetahResource;
 use Waygou\NovaUx\Components\Fields\Map;
 use Waygou\NovaUx\Components\Fields\Place;
 use Waygou\NovaUx\Components\Fields\Text;
+use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class Address extends XheetahResource
 {

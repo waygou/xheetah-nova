@@ -9,8 +9,8 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
-use Waygou\XheetahNova\Abstracts\XheetahResource;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
+use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class ClientUser extends XheetahResource
 {
