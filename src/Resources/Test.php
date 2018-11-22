@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Waygou\Xheetah\Models\Address;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
-use Waygou\XheetahNovaUI\Components\Fields\BelongsTo;
-use Waygou\XheetahNovaUI\Components\Fields\Text;
-use Waygou\XheetahNovaUI\Components\Fields\Topic;
+use Waygou\NovaUx\Components\Fields\BelongsTo;
+use Waygou\NovaUx\Components\Fields\Text;
+use Waygou\NovaUx\Components\Fields\Topic;
 
 class Test extends XheetahResource
 {

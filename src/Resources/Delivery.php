@@ -12,13 +12,13 @@ use Laravel\Nova\Fields\Number;
 use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\User;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
-use Waygou\XheetahNovaUI\Components\Fields\BelongsTo;
-use Waygou\XheetahNovaUI\Components\Fields\Map;
-use Waygou\XheetahNovaUI\Components\Fields\Place;
-use Waygou\XheetahNovaUI\Components\Fields\Select;
-use Waygou\XheetahNovaUI\Components\Fields\Text;
-use Waygou\XheetahNovaUI\Components\Fields\Textarea;
-use Waygou\XheetahNovaUI\Components\Fields\Topic;
+use Waygou\NovaUx\Components\Fields\BelongsTo;
+use Waygou\NovaUx\Components\Fields\Map;
+use Waygou\NovaUx\Components\Fields\Place;
+use Waygou\NovaUx\Components\Fields\Select;
+use Waygou\NovaUx\Components\Fields\Text;
+use Waygou\NovaUx\Components\Fields\Textarea;
+use Waygou\NovaUx\Components\Fields\Topic;
 
 class Delivery extends XheetahResource
 {

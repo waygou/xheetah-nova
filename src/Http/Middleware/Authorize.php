@@ -2,7 +2,7 @@
 
 namespace Waygou\XheetahNova\Http\Middleware;
 
-use Waygou\XheetahNova\NovaXheetah;
+use Waygou\XheetahNova\XheetahNova;
 
 class Authorize
 {
@@ -16,6 +16,6 @@ class Authorize
      */
     public function handle($request, $next)
     {
-        return resolve(NovaXheetah::class)->authorize($request) ? $next($request) : abort(403);
+        return resolve(XheetahNova::class)->authorize($request) ? $next($request) : abort(403);
     }
 }

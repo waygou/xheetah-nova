@@ -7,9 +7,9 @@ use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
-use Waygou\XheetahNovaUI\Components\Fields\Map;
-use Waygou\XheetahNovaUI\Components\Fields\Place;
-use Waygou\XheetahNovaUI\Components\Fields\Text;
+use Waygou\NovaUx\Components\Fields\Map;
+use Waygou\NovaUx\Components\Fields\Place;
+use Waygou\NovaUx\Components\Fields\Text;
 
 class Address extends XheetahResource
 {

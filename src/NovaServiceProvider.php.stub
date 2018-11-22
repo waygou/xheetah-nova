@@ -4,13 +4,12 @@ namespace App\Providers;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
-use Waygou\XheetahNova\NovaXheetah;
+use Waygou\XheetahNova\XheetahNova;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Waygou\SurveyorNova\NovaSurveyor;
+use Waygou\SurveyorNova\SurveyorNova;
 use Orlyapps\NovaChangelog\NovaChangelog;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use MadWeb\NovaTelescopeLink\TelescopeLink;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -72,8 +71,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         $tools = [];
 
-        $tools[] = new NovaXheetah;
-        $tools[] = new NovaSurveyor;
+        $tools[] = new XheetahNova;
+        $tools[] = new SurveyorNova;
         $tools[] = new NovaChangelog;
 
         return $tools;

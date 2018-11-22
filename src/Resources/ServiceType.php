@@ -7,7 +7,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
-use Waygou\XheetahNovaUI\Components\Fields\BelongsTo;
+use Waygou\NovaUx\Components\Fields\BelongsTo;
 
 class ServiceType extends XheetahResource
 {

@@ -11,7 +11,7 @@
 
             <p class="text-white-50% text-lg">
                 You can edit this tool's component at:
-                <code class="ml-1 border border-80 text-sm font-mono text-white bg-black rounded px-2 py-1">/nova-tools/NovaXheetah/resources/js/components/Tool.vue</code>
+                <code class="ml-1 border border-80 text-sm font-mono text-white bg-black rounded px-2 py-1">/nova-tools/XheetahNova/resources/js/components/Tool.vue</code>
             </p>
         </card>
     </div>

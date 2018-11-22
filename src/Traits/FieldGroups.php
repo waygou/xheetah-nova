@@ -3,8 +3,8 @@
 namespace Waygou\XheetahNova\Traits;
 
 use Laravel\Nova\Fields\Country;
-use Waygou\XheetahNovaUI\Components\Fields\Map;
-use Waygou\XheetahNovaUI\Components\Fields\Text;
+use Waygou\NovaUx\Components\Fields\Map;
+use Waygou\NovaUx\Components\Fields\Text;
 
 trait FieldGroups
 {

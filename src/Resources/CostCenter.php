@@ -8,9 +8,9 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
-use Waygou\XheetahNovaUI\Components\Fields\BelongsTo;
-use Waygou\XheetahNovaUI\Components\Fields\Text;
-use Waygou\XheetahNovaUI\Components\Fields\Textarea;
+use Waygou\NovaUx\Components\Fields\BelongsTo;
+use Waygou\NovaUx\Components\Fields\Text;
+use Waygou\NovaUx\Components\Fields\Textarea;
 
 class CostCenter extends XheetahResource
 {

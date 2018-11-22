@@ -19,7 +19,7 @@ use Waygou\XheetahNova\Resources\User;
 use Waygou\XheetahNova\Resources\Vehicle;
 use Waygou\XheetahNova\Resources\VehicleType;
 
-class NovaXheetah extends Tool
+class XheetahNova extends Tool
 {
     /**
      * Perform any tasks that need to happen when the tool is booted.
