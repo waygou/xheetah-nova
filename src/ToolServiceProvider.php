@@ -23,11 +23,16 @@ class ToolServiceProvider extends ServiceProvider
             $this->routes();
         });
 
+        $this->loadTranslations();
+
         Nova::serving(function (ServingNova $event) {
-            //
+            Nova::style('xheetah-nova-theme', __DIR__.'/../resources/css/theme.css');
         });
 
-        $this->loadTranslations();
+        $this->publishes([
+            __DIR__.'/../resources/img'      => public_path('vendor/xheetah'),
+            __DIR__.'/../resources/partials' => resource_path('views/vendor/nova/partials'),
+        ], 'xheetah-nova-theme-overrides');
 
         $this->publishes([
             __DIR__.'/NovaServiceProvider.php.stub'    => base_path('app/Providers/NovaServiceProvider.php'),

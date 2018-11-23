@@ -1,0 +1,1 @@
+<img src="/vendor/xheetah/logo.png">
