@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Titasgailius\SearchRelations\SearchesRelations;
-use Waygou\ResourceHeaderCard\ResourceHeaderCard;
+use Waygou\NovaUx\Components\Cards\ResourceHeaderCard;
 use Waygou\XheetahUtils\Models\SvgIcon;
 
 abstract class XheetahResource extends Resource
