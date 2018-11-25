@@ -30,8 +30,8 @@ class ToolServiceProvider extends ServiceProvider
         });
 
         $this->publishes([
-            __DIR__.'/../resources/img'      => public_path('vendor/xheetah'),
-            __DIR__.'/../resources/partials' => resource_path('views/vendor/nova/partials'),
+            __DIR__.'/../resources/img/'      => public_path('vendor/xheetah/'),
+            __DIR__.'/../resources/partials/' => resource_path('views/vendor/nova/partials/'),
         ], 'xheetah-nova-theme-overrides');
 
         $this->publishes([
