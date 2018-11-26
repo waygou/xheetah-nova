@@ -80,17 +80,26 @@ return [
     'common' => [
         'address'       => 'Address',
         'city'          => 'City',
+        'courier'       => 'Courier',
         'comments'      => 'Comments',
         'contact_name'  => 'Contact Name',
         'contact_phone' => 'Contact Phone',
         'contact_email' => 'Contact Email',
         'country'       => 'Country',
         'floor_number'  => 'Floor number',
+        'license_plate' => 'License Plate',
         'locality'      => 'Locality',
         'is_active'     => 'Is Active',
         'map'           => 'Map',
         'name'          => 'Name',
         'postal_code'   => 'Postal Code',
+        'registration'  => 'Registration',
+        'since'         => 'Since'
+    ],
+
+    'vehicles' => [
+        'brandmodel' => 'Brand / Model',
+        'type' => 'Type'
     ],
 
     'clients' => [

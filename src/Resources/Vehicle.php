@@ -39,25 +39,24 @@ class Vehicle extends XheetahResource
         return [
             ID::make()->sortable()->onlyOnForms(),
 
-            Text::make(trans('xheetah-nova::fields.brandmodel'), 'brandmodel'),
+            Text::make(trans('xheetah-nova::fields.vehicles.brandmodel'), 'brandmodel'),
 
-            Date::make(trans('xheetah-nova::fields.since')),
+            Date::make(trans('xheetah-nova::fields.common.since')),
 
-            Text::make(trans('xheetah-nova::fields.registration'))
-                ->help(trans('xheetah-nova::help.registration')),
+            Text::make(trans('xheetah-nova::fields.common.registration'))
+                ->help(trans('xheetah-nova::help.vehicles.registration')),
 
-            Text::make(trans('xheetah-nova::fields.license_plate')),
+            Text::make(trans('xheetah-nova::fields.common.license_plate')),
 
-            Text::make('Courier', function () {
+            Text::make(trans('xheetah-nova::fields.common.courier'), function () {
                 if (!is_null($this->user)) {
                     return "<span via-resource='vehicles' via-resource-id='{$this->id}' class='text-left'><span><a href='/nova/resources/couriers/{$this->user->id}' class='no-underline dim text-primary font-bold'>{$this->user->name}</a></span></span>";
                 }
-
                 return '—';
             })->asHtml()
               ->onlyOnIndex(),
 
-            BelongsTo::make('Vehicle Type', 'vehicleType', \Waygou\XheetahNova\Resources\VehicleType::class),
+            BelongsTo::make(trans('xheetah-nova::fields.vehicles.type'), 'vehicleType', \Waygou\XheetahNova\Resources\VehicleType::class),
 
             HasOne::make(trans('xheetah-nova::resources.couriers.singular'), 'user', \Waygou\XheetahNova\Resources\Courier::class),
         ];
