@@ -2,11 +2,12 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
 use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphMany;
 use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\NovaUx\Components\Fields\Topic;
@@ -52,13 +53,14 @@ class Client extends XheetahResource
                 trans('xheetah-nova::fields.common.name'),
                 'name'
             )
-                ->help(trans('xheetah-nova::help.clients.name'))
-                ->rules('required'),
+                ->rules('required')
+                ->help(trans('xheetah-nova::help.clients.name')),
 
             Text::make(
                 trans('xheetah-nova::fields.clients.social_designation'),
                 'social_name'
             )
+                ->rules('required')
                 ->onlyOnForms(),
 
             Date::make(
@@ -74,6 +76,13 @@ class Client extends XheetahResource
                 'fiscal_number'
             )
                 ->onlyOnForms(),
+
+            Boolean::make(
+                trans('xheetah-nova::fields.clients.active'),
+                'is_active'
+            )->canSee(function ($request) {
+                return user_is(['super-admin', 'admin', 'client-admin']);
+            })->hideFromIndex(),
 
             Topic::make(trans('xheetah-nova::topics.clients.user_admin'))
                  ->withSVG('user'),
@@ -95,27 +104,29 @@ class Client extends XheetahResource
                 trans('xheetah-nova::fields.clients.contact_email'),
                 'contact_email'
             )
-                 ->rules('required')
+                 ->rules('required', 'email')
                  ->help(trans('xheetah-nova::help.clients.contact_email'))
                  ->clickable()
                  ->clickableOnIndex(),
 
             Topic::make(trans('xheetah-nova::topics.clients.integration'))
+                 ->onlyOnDetail()
                  ->withSVG('cog'),
 
             Text::make(
                 trans('xheetah-nova::fields.clients.api_token'),
                 'api_token'
             )
-                ->rules('required', 'size:15')
-                ->hideFromIndex()
-                ->onCreateDefault(strtoupper(str_random(15)))
+                ->onlyOnDetail()
+                ->canSee(function ($request) {
+                    return user_is(['super-admin', 'admin', 'client-admin']);
+                })
                 ->help(trans('xheetah-nova::help.clients.api_token')),
 
             /*
             HasMany::make(trans('xheetah-nova::fields.deliveries'), 'deliveries', \Waygou\XheetahNova\Resources\Delivery::class),
-
             */
+
             HasMany::make(trans('xheetah-nova::resources.cost_centers.plural'), 'costCenters', \Waygou\XheetahNova\Resources\CostCenter::class),
 
             HasMany::make(trans('xheetah-nova::fields.clientusers'), 'users', \Waygou\XheetahNova\Resources\ClientUser::class),
