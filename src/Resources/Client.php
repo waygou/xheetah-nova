@@ -2,12 +2,12 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Date;
+use Inspheric\Fields\Email;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
 use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\NovaUx\Components\Fields\Topic;

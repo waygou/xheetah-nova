@@ -110,7 +110,7 @@ return [
         'contact_email'      => 'Contact Email',
         'contact_phone'      => 'Contact Phone',
         'api_token'          => 'API Token',
-        'active'             => 'Is Active?'
+        'active'             => 'Is Active?',
     ],
 
     'addresses' => [
