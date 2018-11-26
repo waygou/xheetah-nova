@@ -94,12 +94,12 @@ return [
         'name'          => 'Name',
         'postal_code'   => 'Postal Code',
         'registration'  => 'Registration',
-        'since'         => 'Since'
+        'since'         => 'Since',
     ],
 
     'vehicles' => [
         'brandmodel' => 'Brand / Model',
-        'type' => 'Type'
+        'type'       => 'Type',
     ],
 
     'clients' => [
