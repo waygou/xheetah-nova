@@ -52,6 +52,7 @@ class Vehicle extends XheetahResource
                 if (!is_null($this->user)) {
                     return "<span via-resource='vehicles' via-resource-id='{$this->id}' class='text-left'><span><a href='/nova/resources/couriers/{$this->user->id}' class='no-underline dim text-primary font-bold'>{$this->user->name}</a></span></span>";
                 }
+
                 return '—';
             })->asHtml()
               ->onlyOnIndex(),
