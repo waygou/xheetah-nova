@@ -91,13 +91,11 @@ return [
         'plural'   => 'Clients',
         'header'   => [
             'svg_name'    => 'user-group',
-            'title'       => 'Clients management',
-            'line_1'      => 'You can manage your Clients by defining content on this feature.',
-            'line_2'      => 'Please check the documentation in case or doubts.',
-            'line_3'      => 'Thank you very much. Your lovely team.',
+            'title'       => 'Client management',
+            'line_1'      => 'Manage your own Client, or create new Clients.',
             'link'        => [
                 'text' => 'Documentation link',
-                'url'  => 'http://www.clix.pt',
+                'url'  => 'https://docs.xheetah.com/clients/manage',
             ],
         ],
     ],
