@@ -86,12 +86,15 @@ return [
         'contact_phone' => 'Contact Phone',
         'contact_email' => 'Contact Email',
         'country'       => 'Country',
+        'email'         => 'E-mail',
         'floor_number'  => 'Floor number',
         'license_plate' => 'License Plate',
         'locality'      => 'Locality',
         'is_active'     => 'Is Active',
+        'is_admin'      => 'Is Admin',
         'map'           => 'Map',
         'name'          => 'Name',
+        'phone'         => 'Phone',
         'postal_code'   => 'Postal Code',
         'registration'  => 'Registration',
         'since'         => 'Since',
@@ -118,8 +121,8 @@ return [
 
     ],
 
-    'costcenters' => [
-        '',
+    'client_users' => [
+        ''
     ],
 
     'deliveries'               => [

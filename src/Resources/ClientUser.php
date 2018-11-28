@@ -43,25 +43,28 @@ class ClientUser extends XheetahResource
               ->sortable()
               ->onlyOnForms(),
 
-            Text::make(trans('xheetah-nova::fields.name'), 'name'),
+            Text::make(trans('xheetah-nova::fields.common.name'), 'name'),
 
-            Email::make(trans('xheetah-nova::fields.email'), 'email')
+            Email::make(trans('xheetah-nova::fields.common.email'), 'email')
+                 ->hideFromIndex()
                  ->clickable(),
 
-            Text::make(trans('xheetah-nova::fields.phone'), 'phone'),
+            Text::make(trans('xheetah-nova::fields.common.phone'), 'phone')
+                ->hideFromIndex(),
 
-            Password::make(trans('xheetah-nova::fields.password'), 'password')
+            Password::make(trans('xheetah-nova::fields.common.password'), 'password')
                     ->onlyOnForms(),
 
-            Boolean::make(trans('xheetah-nova::fields.is_active'), 'is_active'),
+            Boolean::make(trans('xheetah-nova::fields.common.is_active'), 'is_active'),
 
             // Computed field: Does this client user has a client-admin profile code?
-            Boolean::make(trans('xheetah-nova::fields.is_admin'), function () {
+            Boolean::make(trans('xheetah-nova::fields.common.is_admin'), function () {
                 return $this->profiles->pluck('code')->contains('client-admin');
             }),
 
             BelongsToMany::make(trans('xheetah-nova::fields.profiles'), 'profiles', \Waygou\SurveyorNova\Resources\Profile::class),
-            BelongsTo::make(trans('xheetah-nova::fields.client'), 'client', \Waygou\XheetahNova\Resources\Client::class)
+
+            BelongsTo::make(trans('xheetah-nova::resources.clients.singular'), 'client', \Waygou\XheetahNova\Resources\Client::class)
                      ->searchable(),
 
             // By default the main role is computed in the model observer.
