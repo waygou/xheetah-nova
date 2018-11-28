@@ -23,7 +23,7 @@ return [
     ],
 
     'client_users' => [
-        'password' => 'You can change your password here.'
+        'password' => 'You can change your password here.',
     ],
 
     'addresses' => [
