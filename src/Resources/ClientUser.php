@@ -90,8 +90,7 @@ class ClientUser extends XheetahResource
                              return user_is(['super-admin', 'admin']);
                          }),
 
-            BelongsTo::make(trans('xheetah-nova::resources.clients.singular'), 'client', \Waygou\XheetahNova\Resources\Client::class)
-                     ->searchable(),
+            BelongsTo::make(trans('xheetah-nova::resources.clients.singular'), 'client', \Waygou\XheetahNova\Resources\Client::class),
 
             // By default the main role is computed in the model observer.
             BelongsTo::make(trans('xheetah-nova::fields.client_users.main_role'), 'mainRole', \Waygou\XheetahNova\Resources\MainRole::class)

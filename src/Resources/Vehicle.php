@@ -22,7 +22,7 @@ class Vehicle extends XheetahResource
         'id', 'brandmodel', 'registration',  'license_plate',
     ];
 
-    public static $with = [];
+    public static $with = ['user', 'vehicleType'];
 
     public static function group()
     {

@@ -2,13 +2,13 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
 use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\BelongsToMany;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
@@ -25,11 +25,10 @@ class Courier extends XheetahResource
     ];
 
     public static $searchRelations = [
-        'mainRole' => ['name'],
-        'vehicle'  => ['name'],
+        'mainRole' => ['name']
     ];
 
-    public static $with = ['mainRole', 'profiles', 'vehicle'];
+    public static $with = ['client', 'mainRole', 'profiles'];
 
     public static function group()
     {
@@ -66,7 +65,7 @@ class Courier extends XheetahResource
                         return user_is(['admin', 'super-admin']) ||
                                $request->user()->id == $this->id;
                     })
-                    ->help(trans('xheetah-nova::help.couriers.password'))
+                    ->help(trans('xheetah-nova::help.courier.password'))
                     ->onlyOnForms(),
 
             Text::make(xheetah_trans('fields.common.phone'), 'phone')
@@ -82,21 +81,20 @@ class Courier extends XheetahResource
                 trans('xheetah-nova::resources.profiles.plural'),
                 'profiles',
                 \Waygou\SurveyorNova\Resources\Profile::class
-            )->onlyOnDetail(),
+            ),
 
             // By default the main role is computed in the courier observer.
             BelongsTo::make(
                 trans('xheetah-nova::resources.main_roles.singular'),
                 'mainRole',
                 \Waygou\XheetahNova\Resources\MainRole::class
-            )->rules('required')
-             ->hideFromIndex(),
+            )->exceptOnForms(),
 
             BelongsTo::make(
-                trans('xheetah-nova::fields.common.vehicle'),
+                trans('xheetah-nova::resources.vehicles.singular'),
                 'vehicle',
                 \Waygou\XheetahNova\Resources\Vehicle::class
-            )->hideFromIndex(),
+            )->nullable(),
         ];
     }
 }
