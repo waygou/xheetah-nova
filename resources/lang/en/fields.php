@@ -94,6 +94,7 @@ return [
         'is_admin'      => 'Is Admin',
         'map'           => 'Map',
         'name'          => 'Name',
+        'password'      => 'Password',
         'phone'         => 'Phone',
         'postal_code'   => 'Postal Code',
         'registration'  => 'Registration',
@@ -122,7 +123,7 @@ return [
     ],
 
     'client_users' => [
-        ''
+        'main_role' => 'Main Role'
     ],
 
     'deliveries'               => [

@@ -38,7 +38,7 @@ class Courier extends XheetahResource
 
     public function subtitle()
     {
-        return "{$this->phone}";
+        return "{$this->phone} {$this->email}";
     }
 
     public function fields(Request $request)

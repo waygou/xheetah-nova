@@ -22,6 +22,10 @@ return [
         'registration' => 'A specific code that might be used by the client to refer an internal company reference',
     ],
 
+    'client_users' => [
+        'password' => 'You can change your password here.'
+    ],
+
     'addresses' => [
         'name' => 'Something easy to remember for this address. E.g. Near Carrefour',
     ],

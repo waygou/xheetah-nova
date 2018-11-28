@@ -86,6 +86,11 @@ return [
         'plural'   => 'Couriers',
     ],
 
+    'profiles' => [
+        'singular' => 'Profile',
+        'plural'   => 'Profiles',
+    ],
+
     'clients' => [
         'singular' => 'Client',
         'plural'   => 'Clients',
