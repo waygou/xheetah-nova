@@ -99,7 +99,7 @@ return [
         'postal_code'   => 'Postal Code',
         'registration'  => 'Registration',
         'since'         => 'Since',
-        'vehicle'       => 'Vehicle'
+        'vehicle'       => 'Vehicle',
     ],
 
     'vehicles' => [
@@ -124,7 +124,7 @@ return [
     ],
 
     'client_users' => [
-        'main_role' => 'Main Role'
+        'main_role' => 'Main Role',
     ],
 
     'deliveries'               => [
