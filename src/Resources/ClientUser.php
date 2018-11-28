@@ -22,7 +22,7 @@ class ClientUser extends XheetahResource
 
     public static $searchRelations = [
         'mainRole' => ['name'],
-        'client' => ['name']
+        'client'   => ['name'],
     ];
 
     public static $search = [
@@ -59,7 +59,7 @@ class ClientUser extends XheetahResource
             Text::make(trans('xheetah-nova::fields.common.phone'), 'phone')
                 ->hideFromIndex(),
 
-            /**
+            /*
              * Password is only shown in case it's:
              * A super-admin, admin, or the own user.
              */
@@ -82,12 +82,12 @@ class ClientUser extends XheetahResource
             Boolean::make(trans('xheetah-nova::fields.common.is_admin'), function () {
                 return $this->profiles->pluck('code')->contains('client-admin');
             })->canSee(function ($request) {
-                    return user_is(['super-admin', 'admin']);
+                return user_is(['super-admin', 'admin']);
             }),
 
             BelongsToMany::make(trans('xheetah-nova::resources.profiles.plural'), 'profiles', \Waygou\SurveyorNova\Resources\Profile::class)
                          ->canSee(function ($request) {
-                            return user_is(['super-admin', 'admin']);
+                             return user_is(['super-admin', 'admin']);
                          }),
 
             BelongsTo::make(trans('xheetah-nova::resources.clients.singular'), 'client', \Waygou\XheetahNova\Resources\Client::class)
@@ -96,7 +96,7 @@ class ClientUser extends XheetahResource
             // By default the main role is computed in the model observer.
             BelongsTo::make(trans('xheetah-nova::fields.client_users.main_role'), 'mainRole', \Waygou\XheetahNova\Resources\MainRole::class)
                      ->canSee(function ($request) {
-                        return user_is(['super-admin', 'admin']);
+                         return user_is(['super-admin', 'admin']);
                      })
                      ->onlyOnDetail(),
         ];
