@@ -122,7 +122,7 @@ return [
     ],
 
     'client_users' => [
-        ''
+        '',
     ],
 
     'deliveries'               => [
