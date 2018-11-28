@@ -99,6 +99,7 @@ return [
         'postal_code'   => 'Postal Code',
         'registration'  => 'Registration',
         'since'         => 'Since',
+        'vehicle'       => 'Vehicle'
     ],
 
     'vehicles' => [

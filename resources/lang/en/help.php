@@ -22,7 +22,11 @@ return [
         'registration' => 'A specific code that might be used by the client to refer an internal company reference',
     ],
 
-    'client_users' => [
+    'client_user' => [
+        'password' => 'You can change your password here.'
+    ],
+
+    'courier' => [
         'password' => 'You can change your password here.'
     ],
 

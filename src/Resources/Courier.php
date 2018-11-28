@@ -50,42 +50,50 @@ class Courier extends XheetahResource
                   return user_is('super-admin');
               }),
 
-            Text::make(xheetah_trans('fields.name'))
+            Text::make(xheetah_trans('fields.common.name'), 'name')
                 ->rules('required', 'max:191'),
 
-            Email::make(xheetah_trans('fields.email'))
+            Email::make(xheetah_trans('fields.email'), 'email')
                  ->creationRules('unique:users,email', 'max:191')
                  ->updateRules('unique:users,email,{{resourceId}}')
                  ->onlyOnForms()
                  ->clickable(),
 
-            Password::make(xheetah_trans('fields.password'))
+            Password::make(xheetah_trans('fields.common.password'), 'password')
                     ->creationRules('required', 'min:6')
                     ->updateRules('nullable', 'min:6')
+                    ->canSee(function ($request) {
+                        return user_is(['admin', 'super-admin']) ||
+                               $request->user()->id == $this->id;
+                    })
+                    ->help(trans('xheetah-nova::help.couriers.password'))
                     ->onlyOnForms(),
 
-            Text::make(xheetah_trans('fields.phone'))
+            Text::make(xheetah_trans('fields.common.phone'), 'phone')
                 ->onlyOnForms(),
 
-            Boolean::make(xheetah_trans('fields.is_active'), 'is_active')
+            Boolean::make(xheetah_trans('fields.common.is_active'), 'is_active')
+                    ->canSee(function ($request) {
+                        return user_is(['admin', 'super-admin']);
+                    })
                    ->rules('required'),
 
             BelongsToMany::make(
-                trans('xheetah-nova::fields.profiles'),
+                trans('xheetah-nova::resources.profiles.plural'),
                 'profiles',
                 \Waygou\SurveyorNova\Resources\Profile::class
             )->onlyOnDetail(),
 
             // By default the main role is computed in the courier observer.
             BelongsTo::make(
-                trans('xheetah-nova::fields.main_role'),
+                trans('xheetah-nova::resources.main_roles.singular'),
                 'mainRole',
                 \Waygou\XheetahNova\Resources\MainRole::class
             )->rules('required')
              ->hideFromIndex(),
 
             BelongsTo::make(
-                trans('xheetah-nova::fields.vehicle'),
+                trans('xheetah-nova::fields.common.vehicle'),
                 'vehicle',
                 \Waygou\XheetahNova\Resources\Vehicle::class
             )->hideFromIndex(),

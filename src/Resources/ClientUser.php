@@ -64,11 +64,13 @@ class ClientUser extends XheetahResource
              * A super-admin, admin, or the own user.
              */
             Password::make(trans('xheetah-nova::fields.common.password'), 'password')
+                    ->creationRules('required', 'min:6')
+                    ->updateRules('nullable', 'min:6')
                     ->canSee(function ($request) {
                         return user_is(['admin', 'super-admin']) ||
                                $request->user()->id == $this->id;
                     })
-                    ->help(trans('xheetah-nova::help.client_users.password'))
+                    ->help(trans('xheetah-nova::help.client_user.password'))
                     ->onlyOnForms(),
 
             Boolean::make(trans('xheetah-nova::fields.common.is_active'), 'is_active')
