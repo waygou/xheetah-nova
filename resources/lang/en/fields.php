@@ -123,7 +123,7 @@ return [
     ],
 
     'client_users' => [
-        'main_role' => 'Main Role'
+        'main_role' => 'Main Role',
     ],
 
     'deliveries'               => [
