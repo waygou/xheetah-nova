@@ -28,7 +28,7 @@ class Client extends XheetahResource
     public static $with = ['users',
                            'costCenters',
                            'addresses',
-                           'deliveries'];
+                           'deliveries', ];
 
     public static function group()
     {
