@@ -25,7 +25,10 @@ class Client extends XheetahResource
         'name', 'fiscal_number',
     ];
 
-    public static $with = ['users'];
+    public static $with = ['users',
+                           'costCenters',
+                           'addresses',
+                           'deliveries'];
 
     public static function group()
     {
@@ -34,7 +37,7 @@ class Client extends XheetahResource
 
     public function subtitle()
     {
-        return "{$this->postal_code} {$this->city}";
+        return "{$this->contact_name} {$this->fiscal_number}";
     }
 
     public function fields(Request $request)
@@ -123,15 +126,13 @@ class Client extends XheetahResource
                 })
                 ->help(trans('xheetah-nova::help.clients.api_token')),
 
-            /*
-            HasMany::make(trans('xheetah-nova::fields.deliveries'), 'deliveries', \Waygou\XheetahNova\Resources\Delivery::class),
-            */
-
             HasMany::make(trans('xheetah-nova::resources.cost_centers.plural'), 'costCenters', \Waygou\XheetahNova\Resources\CostCenter::class),
 
-            HasMany::make(trans('xheetah-nova::fields.clientusers'), 'users', \Waygou\XheetahNova\Resources\ClientUser::class),
+            HasMany::make(trans('xheetah-nova::resources.client_users.plural'), 'users', \Waygou\XheetahNova\Resources\ClientUser::class),
 
             MorphMany::make(trans('xheetah-nova::resources.addresses.plural'), 'addresses', \Waygou\XheetahNova\Resources\Address::class),
+
+            HasMany::make(trans('xheetah-nova::resources.deliveries.plural'), 'deliveries', \Waygou\XheetahNova\Resources\Delivery::class),
         ];
     }
 }

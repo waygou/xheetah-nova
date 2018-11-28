@@ -43,14 +43,14 @@ class ClientUser extends XheetahResource
               ->sortable()
               ->onlyOnForms(),
 
-            Text::make(trans('xheetah-nova::fields.name')),
+            Text::make(trans('xheetah-nova::fields.name'), 'name'),
 
-            Email::make(trans('xheetah-nova::fields.email'))
+            Email::make(trans('xheetah-nova::fields.email'), 'email')
                  ->clickable(),
 
-            Text::make(trans('xheetah-nova::fields.phone')),
+            Text::make(trans('xheetah-nova::fields.phone'), 'phone'),
 
-            Password::make(trans('xheetah-nova::fields.password'))
+            Password::make(trans('xheetah-nova::fields.password'), 'password')
                     ->onlyOnForms(),
 
             Boolean::make(trans('xheetah-nova::fields.is_active'), 'is_active'),

@@ -20,7 +20,7 @@ class Address extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'name', 'address',
+        'name', 'address', 'city', 'postal_code',
     ];
 
     public static $with = [];
@@ -32,7 +32,7 @@ class Address extends XheetahResource
 
     public function subtitle()
     {
-        return "{$this->city}, {$this->locality}";
+        return "{$this->postal_code}, {$this->locality}";
     }
 
     public function fields(Request $request)
