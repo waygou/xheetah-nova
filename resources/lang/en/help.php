@@ -23,11 +23,11 @@ return [
     ],
 
     'client_user' => [
-        'password' => 'You can change your password here.'
+        'password' => 'You can change your password here.',
     ],
 
     'courier' => [
-        'password' => 'You can change your password here.'
+        'password' => 'You can change your password here.',
     ],
 
     'addresses' => [
