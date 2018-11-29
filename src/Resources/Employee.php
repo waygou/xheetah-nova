@@ -26,6 +26,10 @@ class Employee extends XheetahResource
 
     public static $with = ['client', 'mainRole', 'profiles'];
 
+    public static $searchRelations = [
+        'mainRole' => ['name'],
+    ];
+
     public static function group()
     {
         return trans('xheetah-nova::sidebar.entities');
@@ -41,26 +45,49 @@ class Employee extends XheetahResource
         return [
             ID::make()
               ->sortable()
-              ->onlyOnForms(),
+              ->canSee(function ($request) {
+                  return user_is('super-admin');
+              }),
 
-            Text::make(trans('xheetah-nova::fields.name')),
+            Text::make(trans('xheetah-nova::fields.common.name'), 'name')
+                ->rules('required', 'max:191'),
 
-            Email::make(trans('xheetah-nova::fields.email'))
+            Email::make(trans('xheetah-nova::fields.common.email'), 'email')
+                 ->creationRules('unique:users,email', 'max:191')
+                 ->updateRules('unique:users,email,{{resourceId}}')
                  ->clickableOnIndex()
                  ->clickable(),
 
-            Text::make(trans('xheetah-nova::fields.phone')),
+            Text::make(trans('xheetah-nova::fields.phone'), 'phone'),
 
-            Password::make(trans('xheetah-nova::fields.password'))
+            Password::make(xheetah_trans('fields.common.password'), 'password')
+                    ->creationRules('required', 'min:6')
+                    ->updateRules('nullable', 'min:6')
+                    ->canSee(function ($request) {
+                        return user_is(['admin', 'super-admin']) ||
+                               $request->user()->id == $this->id;
+                    })
+                    ->help(trans('xheetah-nova::help.employee.password'))
                     ->onlyOnForms(),
 
-            Boolean::make(trans('xheetah-nova::fields.is_active'), 'is_active'),
+            Boolean::make(xheetah_trans('fields.common.is_active'), 'is_active')
+                    ->canSee(function ($request) {
+                        return user_is(['admin', 'super-admin']);
+                    })
+                   ->rules('required'),
 
-            BelongsToMany::make('Profiles', 'profiles', \Waygou\SurveyorNova\Resources\Profile::class),
+            BelongsToMany::make(
+                trans('xheetah-nova::resources.profiles.plural'),
+                'profiles',
+                \Waygou\SurveyorNova\Resources\Profile::class
+            ),
 
             // By default the main role is computed in the courier observer.
-            BelongsTo::make('Main Role', 'mainRole', \Waygou\XheetahNova\Resources\MainRole::class)
-                     ->onlyOnDetail(),
+            BelongsTo::make(
+                trans('xheetah-nova::resources.main_roles.singular'),
+                'mainRole',
+                \Waygou\XheetahNova\Resources\MainRole::class
+            )->exceptOnForms(),
         ];
     }
 }
