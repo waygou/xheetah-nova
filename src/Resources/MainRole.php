@@ -34,10 +34,10 @@ class MainRole extends XheetahResource
               ->sortable()
               ->onlyOnForms(),
 
-            Text::make(trans('xheetah-nova::fields.name'), 'name'),
-            Text::make(trans('xheetah-nova::fields.code'), 'code'),
+            Text::make(trans('xheetah-nova::fields.common.name'), 'name'),
+            Text::make(trans('xheetah-nova::fields.common.code'), 'code'),
 
-            HasMany::make(trans('xheetah-nova::fields.users'), 'users', \Waygou\XheetahNova\Resources\User::class),
+            HasMany::make(trans('xheetah-nova::resources.users.plural'), 'users', \Waygou\XheetahNova\Resources\User::class),
         ];
     }
 }

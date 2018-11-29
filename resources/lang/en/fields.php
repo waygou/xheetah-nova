@@ -80,6 +80,7 @@ return [
     'common' => [
         'address'       => 'Address',
         'city'          => 'City',
+        'code'          => 'Code',
         'courier'       => 'Courier',
         'comments'      => 'Comments',
         'contact_name'  => 'Contact Name',

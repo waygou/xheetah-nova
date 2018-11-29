@@ -58,7 +58,7 @@ class Employee extends XheetahResource
                  ->clickableOnIndex()
                  ->clickable(),
 
-            Text::make(trans('xheetah-nova::fields.phone'), 'phone'),
+            Text::make(trans('xheetah-nova::fields.common.phone'), 'phone'),
 
             Password::make(xheetah_trans('fields.common.password'), 'password')
                     ->creationRules('required', 'min:6')
