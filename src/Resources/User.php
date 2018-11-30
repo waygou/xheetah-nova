@@ -2,14 +2,14 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Password;
+use Inspheric\Fields\Email;
 use Laravel\Nova\Fields\BelongsToMany;
-use Waygou\NovaUx\Components\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Password;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
+use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class User extends XheetahResource
@@ -27,7 +27,7 @@ class User extends XheetahResource
     public static $searchRelations = [
         'mainRole'  => ['name'],
         'client'    => ['name'],
-        'vehicle'   => ['vehicle']
+        'vehicle'   => ['vehicle'],
     ];
 
     public static $with = ['client', 'vehicle', 'mainRole', 'profiles'];
