@@ -100,7 +100,7 @@ class ClientUser extends XheetahResource
                     return $this->profiles->pluck('code')->contains('client-admin');
                 }
             )->canSee(function ($request) {
-                    return user_is(['super-admin', 'admin']);
+                return user_is(['super-admin', 'admin']);
             }),
 
             BelongsToMany::make(
