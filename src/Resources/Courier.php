@@ -49,16 +49,27 @@ class Courier extends XheetahResource
                   return user_is('super-admin');
               }),
 
-            Text::make(xheetah_trans('fields.common.name'), 'name')
+            Text::make(
+                trans('fields.common.name'),
+                'name'
+            )
                 ->rules('required', 'max:191'),
 
-            Email::make(xheetah_trans('fields.email'), 'email')
-                 ->creationRules('unique:users,email', 'max:191')
-                 ->updateRules('unique:users,email,{{resourceId}}')
-                 ->onlyOnForms()
-                 ->clickable(),
+            Email::make(
+                trans('fields.common.email'),
+                'email'
+            )
+                ->clickableOnIndex()
+                ->clickable()
+                ->sortable()
+                ->creationRules('unique:tenant.users,email', 'max:191')
+                ->updateRules('unique:tenant.users,email,{{resourceId}}')
+                ->onlyOnForms(),
 
-            Password::make(xheetah_trans('fields.common.password'), 'password')
+            Password::make(
+                trans('fields.common.password'),
+                'password'
+            )
                     ->creationRules('required', 'min:6')
                     ->updateRules('nullable', 'min:6')
                     ->canSee(function ($request) {
@@ -68,10 +79,16 @@ class Courier extends XheetahResource
                     ->help(trans('xheetah-nova::help.courier.password'))
                     ->onlyOnForms(),
 
-            Text::make(xheetah_trans('fields.common.phone'), 'phone')
+            Text::make(
+                trans('fields.common.phone'),
+                'phone'
+            )
                 ->onlyOnForms(),
 
-            Boolean::make(xheetah_trans('fields.common.is_active'), 'is_active')
+            Boolean::make(
+                trans('fields.common.is_active'),
+                'is_active'
+            )
                     ->canSee(function ($request) {
                         return user_is(['admin', 'super-admin']);
                     })

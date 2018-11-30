@@ -43,8 +43,8 @@ abstract class XheetahResource extends Resource
         // Verify if we have a resource translation header for the respective resource name.
         $computedLabel = snake_case(strtolower(str_plural(collect(explode('\\', get_called_class()))->pop())));
 
-        if (is_array(xheetah_trans("resources.{$computedLabel}.header"))) {
-            $header = xheetah_trans("resources.{$computedLabel}.header");
+        if (is_array(trans("resources.{$computedLabel}.header"))) {
+            $header = trans("resources.{$computedLabel}.header");
 
             // Load the resource header card.
             $cards = array_merge($cards, [(new ResourceHeaderCard())
@@ -73,7 +73,7 @@ abstract class XheetahResource extends Resource
     {
         $computedLabel = str_plural(snake_case(collect(explode('\\', get_called_class()))->pop()));
 
-        return xheetah_trans("resources.{$computedLabel}.singular");
+        return trans("xheetah-nova::resources.{$computedLabel}.singular");
     }
 
     public static function indexQuery(NovaRequest $request, $query)

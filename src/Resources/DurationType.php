@@ -39,25 +39,47 @@ class DurationType extends XheetahResource
         return [
             ID::make()->sortable()->onlyOnForms(),
 
-            Text::make(trans('xheetah-nova::fields.name'), 'name'),
+            Text::make(
+                trans('xheetah-nova::fields.name'),
+                'name'
+            ),
 
-            Text::make(trans('xheetah-nova::fields.description'), 'description'),
+            Text::make(
+                trans('xheetah-nova::fields.description'),
+                'description'
+            ),
 
-            TimeField::make(trans('xheetah-nova::fields.requested_until'), 'requested_until')
+            TimeField::make(
+                trans('xheetah-nova::fields.requested_until'),
+                'requested_until'
+            )
                      ->help(trans('xheetah-nova::help.requested_until')),
 
-            Text::make(trans('xheetah-nova::fields.duration'), 'duration'),
+            Text::make(
+                trans('xheetah-nova::fields.duration'),
+                'duration'
+            ),
 
-            Select::make(trans('xheetah-nova::fields.time_type'), 'time_type')->options([
+            Select::make(
+                trans('xheetah-nova::fields.time_type'),
+                'time_type'
+            )->options([
                 'H' => 'Hours',
                 'M' => 'Minutes',
                 'D' => 'Days',
-            ])->displayUsingLabels(),
+                ])->displayUsingLabels(),
 
-            TimeField::make(trans('xheetah-nova::fields.next_day_deadline'), 'next_day_deadline')
+            TimeField::make(
+                trans('xheetah-nova::fields.next_day_deadline'),
+                'next_day_deadline'
+            )
             ->help(trans('xheetah-nova::help.next_day_deadline')),
 
-            HasMany::make(trans('xheetah-nova::fields.service_types'), 'serviceTypes', \Waygou\XheetahNova\Resources\ServiceType::class),
+            HasMany::make(
+                trans('xheetah-nova::fields.service_types'),
+                'serviceTypes',
+                \Waygou\XheetahNova\Resources\ServiceType::class
+            ),
         ];
     }
 }

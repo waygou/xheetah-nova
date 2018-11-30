@@ -2,10 +2,10 @@
 
 namespace Waygou\XheetahNova\Resources;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
+use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class MainRole extends XheetahResource
@@ -32,12 +32,26 @@ class MainRole extends XheetahResource
         return [
             ID::make()
               ->sortable()
-              ->onlyOnForms(),
+              ->canSee(function ($request) {
+                  return user_is('super-admin');
+              }),
 
-            Text::make(trans('xheetah-nova::fields.common.name'), 'name'),
-            Text::make(trans('xheetah-nova::fields.common.code'), 'code'),
+            Text::make(
+                trans('xheetah-nova::fields.common.name'),
+                'name'
+            ),
 
-            HasMany::make(trans('xheetah-nova::resources.users.plural'), 'users', \Waygou\XheetahNova\Resources\User::class),
+            Text::make(
+                trans('xheetah-nova::fields.common.code'),
+                'code'
+            )->creationRules('unique:tenant.main_roles,code', 'max:191')
+             ->updateRules('unique:tenant.main_roles,code,{{resourceId}}'),
+
+            HasMany::make(
+                trans('xheetah-nova::resources.users.plural'),
+                'users',
+                \Waygou\XheetahNova\Resources\User::class
+            ),
         ];
     }
 }

@@ -45,27 +45,53 @@ class CostCenter extends XheetahResource
                     return user_is('super-admin');
                 }),
 
-            Text::make(trans('xheetah-nova::fields.common.name'), 'name')
+            Text::make(
+                trans('xheetah-nova::fields.common.name'),
+                'name'
+            )
                 ->rules('required'),
 
-            Text::make(trans('xheetah-nova::fields.common.contact_name'), 'contact_name')
+            Text::make(
+                trans('xheetah-nova::fields.common.contact_name'),
+                'contact_name'
+            )
                 ->hideFromIndex(),
 
-            Text::make(trans('xheetah-nova::fields.common.contact_phone'), 'contact_phone')
+            Text::make(
+                trans('xheetah-nova::fields.common.contact_phone'),
+                'contact_phone'
+            )
                 ->hideFromIndex(),
 
-            Email::make(trans('xheetah-nova::fields.common.contact_email'), 'contact_email')
+            Email::make(
+                trans('xheetah-nova::fields.common.contact_email'),
+                'contact_email'
+            )
                  ->clickable(),
 
-            Textarea::make(trans('xheetah-nova::fields.common.comments'), 'comments')
+            Textarea::make(
+                trans('xheetah-nova::fields.common.comments'),
+                'comments'
+            )
                 ->hideFromIndex(),
 
-            Boolean::make(trans('xheetah-nova::fields.common.is_active'), 'is_active')
+            Boolean::make(
+                trans('xheetah-nova::fields.common.is_active'),
+                'is_active'
+            )
                    ->onlyOnForms(),
 
-            BelongsTo::make(trans('xheetah-nova::resources.clients.singular'), 'client', \Waygou\XheetahNova\Resources\Client::class),
+            BelongsTo::make(
+                trans('xheetah-nova::resources.clients.singular'),
+                'client',
+                \Waygou\XheetahNova\Resources\Client::class
+            ),
 
-            MorphMany::make(trans('xheetah-nova::resources.addresses.plural'), 'addresses', \Waygou\XheetahNova\Resources\Address::class),
+            MorphMany::make(
+                trans('xheetah-nova::resources.addresses.plural'),
+                'addresses',
+                \Waygou\XheetahNova\Resources\Address::class
+            ),
         ];
     }
 }

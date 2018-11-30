@@ -49,18 +49,30 @@ class Employee extends XheetahResource
                   return user_is('super-admin');
               }),
 
-            Text::make(trans('xheetah-nova::fields.common.name'), 'name')
+            Text::make(
+                trans('xheetah-nova::fields.common.name'),
+                'name'
+            )
                 ->rules('required', 'max:191'),
 
-            Email::make(trans('xheetah-nova::fields.common.email'), 'email')
-                 ->creationRules('unique:users,email', 'max:191')
-                 ->updateRules('unique:users,email,{{resourceId}}')
+            Email::make(
+                trans('xheetah-nova::fields.common.email'),
+                'email'
+            )
+                 ->creationRules('unique:tenant.users,email', 'max:191')
+                 ->updateRules('unique:tenant.users,email,{{resourceId}}')
                  ->clickableOnIndex()
                  ->clickable(),
 
-            Text::make(trans('xheetah-nova::fields.common.phone'), 'phone'),
+            Text::make(
+                trans('xheetah-nova::fields.common.phone'),
+                'phone'
+            ),
 
-            Password::make(xheetah_trans('fields.common.password'), 'password')
+            Password::make(
+                trans('fields.common.password'),
+                'password'
+            )
                     ->creationRules('required', 'min:6')
                     ->updateRules('nullable', 'min:6')
                     ->canSee(function ($request) {
@@ -70,7 +82,10 @@ class Employee extends XheetahResource
                     ->help(trans('xheetah-nova::help.employee.password'))
                     ->onlyOnForms(),
 
-            Boolean::make(xheetah_trans('fields.common.is_active'), 'is_active')
+            Boolean::make(
+                trans('fields.common.is_active'),
+                'is_active'
+            )
                     ->canSee(function ($request) {
                         return user_is(['admin', 'super-admin']);
                     })

@@ -61,7 +61,9 @@ class Delivery extends XheetahResource
                   return user_is('super-admin');
               }),
 
-            Topic::make(trans('xheetah-nova::topics.client_information'))
+            Topic::make(
+                trans('xheetah-nova::topics.client_information')
+            )
                   ->withSVG('icon-user'),
 
             BelongsTo::make(
@@ -82,10 +84,15 @@ class Delivery extends XheetahResource
                 'Waygou\Xheetah\Restrictions\CostCenterRestriction@restrictToClient'
             ),
 
-            Topic::make(trans('xheetah-nova::topics.deliveries.delivery_type'))
+            Topic::make(
+                trans('xheetah-nova::topics.deliveries.delivery_type')
+            )
                   ->withSVG('queue'),
 
-            Text::make(trans('xheetah-nova::fields.deliveries.created_by'), 'created_by')
+            Text::make(
+                trans('xheetah-nova::fields.deliveries.created_by'),
+                'created_by'
+            )
                 ->readonly()
                 ->onCreateDefault(Auth::user()->name),
 
@@ -95,11 +102,19 @@ class Delivery extends XheetahResource
                 \Waygou\XheetahNova\Resources\ServiceType::class
             ),
 
-            Boolean::make(trans('xheetah-nova::fields.deliveries.with_return'), 'with_return'),
+            Boolean::make(
+                trans('xheetah-nova::fields.deliveries.with_return'),
+                'with_return'
+            ),
 
-            Textarea::make(trans('xheetah-nova::fields.deliveries.notes'), 'notes'),
+            Textarea::make(
+                trans('xheetah-nova::fields.deliveries.notes'),
+                'notes'
+            ),
 
-            Topic::make(trans('xheetah-nova::topics.deliveries.related_addresses'))
+            Topic::make(
+                trans('xheetah-nova::topics.deliveries.related_addresses')
+            )
                   ->withSVG('inbox-full'),
 
             Select::make(
@@ -132,7 +147,9 @@ class Delivery extends XheetahResource
                       'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
                   ),
 
-            Topic::make(trans('xheetah-nova::topics.deliveries.origin_location'))
+            Topic::make(
+                trans('xheetah-nova::topics.deliveries.origin_location')
+            )
                   ->withSVG('location'),
 
             Place::make(
@@ -150,11 +167,20 @@ class Delivery extends XheetahResource
                      'Waygou\Xheetah\Restrictions\AddressRestriction@loadPlace'
                  ),
 
-            Text::make(trans('xheetah-nova::fields.deliveries.postal_code'), 'origin_postal_code'),
+            Text::make(
+                trans('xheetah-nova::fields.deliveries.postal_code'),
+                'origin_postal_code'
+            ),
 
-            Text::make(trans('xheetah-nova::fields.deliveries.city'), 'origin_city'),
+            Text::make(
+                trans('xheetah-nova::fields.deliveries.city'),
+                'origin_city'
+            ),
 
-            Text::make(trans('xheetah-nova::fields.deliveries.locality'), 'origin_locality'),
+            Text::make(
+                trans('xheetah-nova::fields.deliveries.locality'),
+                'origin_locality'
+            ),
 
             Country::make(
                 trans('xheetah-nova::fields.deliveries.country'),
@@ -168,9 +194,14 @@ class Delivery extends XheetahResource
             )
                 ->exceptOnForms(),
 
-            Map::make(trans('xheetah-nova::fields.deliveries.address_location'), 'origin_map'),
+            Map::make(
+                trans('xheetah-nova::fields.deliveries.address_location'),
+                'origin_map'
+            ),
 
-            Topic::make(trans('xheetah-nova::topics.deliveries.destination_location'))
+            Topic::make(
+                trans('xheetah-nova::topics.deliveries.destination_location')
+            )
                   ->withSVG('location'),
 
             Place::make(
@@ -188,11 +219,20 @@ class Delivery extends XheetahResource
                      'Waygou\Xheetah\Restrictions\AddressRestriction@loadPlace'
                  ),
 
-            Text::make(trans('xheetah-nova::fields.deliveries.postal_code'), 'destination_postal_code'),
+            Text::make(
+                trans('xheetah-nova::fields.deliveries.postal_code'),
+                'destination_postal_code'
+            ),
 
-            Text::make(trans('xheetah-nova::fields.deliveries.city'), 'destination_city'),
+            Text::make(
+                trans('xheetah-nova::fields.deliveries.city'),
+                'destination_city'
+            ),
 
-            Text::make(trans('xheetah-nova::fields.deliveries.locality'), 'destination_locality'),
+            Text::make(
+                trans('xheetah-nova::fields.deliveries.locality'),
+                'destination_locality'
+            ),
 
             Country::make(
                 trans('xheetah-nova::fields.deliveries.country'),
@@ -206,9 +246,14 @@ class Delivery extends XheetahResource
             )
                 ->exceptOnForms(),
 
-            Map::make(trans('xheetah-nova::fields.deliveries.address_location'), 'destination_map'),
+            Map::make(
+                trans('xheetah-nova::fields.deliveries.address_location'),
+                'destination_map'
+            ),
 
-            Topic::make(trans('xheetah-nova::topics.deliveries.merchandise_information'))
+            Topic::make(
+                trans('xheetah-nova::topics.deliveries.merchandise_information')
+            )
                   ->withSVG('box'),
 
             Number::make(
@@ -231,7 +276,9 @@ class Delivery extends XheetahResource
                 'price_request'
             )->step(0.01),
 
-            Topic::make(trans('xheetah-nova::topics.deliveries.schedule_information'))
+            Topic::make(
+                trans('xheetah-nova::topics.deliveries.schedule_information')
+            )
                   ->withSVG('calendar'),
 
             Select::make(

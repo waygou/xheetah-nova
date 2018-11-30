@@ -104,13 +104,15 @@ class Client extends XheetahResource
                 ->hideFromIndex(),
 
             Email::make(
-                trans('xheetah-nova::fields.clients.contact_email'),
-                'contact_email'
+                trans('fields.common.email'),
+                'email'
             )
-                 ->rules('required', 'email')
-                 ->help(trans('xheetah-nova::help.clients.contact_email'))
-                 ->clickable()
-                 ->clickableOnIndex(),
+                ->clickableOnIndex()
+                ->clickable()
+                ->sortable()
+                ->creationRules('unique:tenant.users,email', 'max:191')
+                ->updateRules('unique:tenant.users,email,{{resourceId}}')
+                ->onlyOnForms(),
 
             Topic::make(trans('xheetah-nova::topics.clients.integration'))
                  ->onlyOnDetail()
@@ -126,13 +128,29 @@ class Client extends XheetahResource
                 })
                 ->help(trans('xheetah-nova::help.clients.api_token')),
 
-            HasMany::make(trans('xheetah-nova::resources.cost_centers.plural'), 'costCenters', \Waygou\XheetahNova\Resources\CostCenter::class),
+            HasMany::make(
+                trans('xheetah-nova::resources.cost_centers.plural'),
+                'costCenters',
+                \Waygou\XheetahNova\Resources\CostCenter::class
+            ),
 
-            HasMany::make(trans('xheetah-nova::resources.client_users.plural'), 'users', \Waygou\XheetahNova\Resources\ClientUser::class),
+            HasMany::make(
+                trans('xheetah-nova::resources.client_users.plural'),
+                'users',
+                \Waygou\XheetahNova\Resources\ClientUser::class
+            ),
 
-            MorphMany::make(trans('xheetah-nova::resources.addresses.plural'), 'addresses', \Waygou\XheetahNova\Resources\Address::class),
+            MorphMany::make(
+                trans('xheetah-nova::resources.addresses.plural'),
+                'addresses',
+                \Waygou\XheetahNova\Resources\Address::class
+            ),
 
-            HasMany::make(trans('xheetah-nova::resources.deliveries.plural'), 'deliveries', \Waygou\XheetahNova\Resources\Delivery::class),
+            HasMany::make(
+                trans('xheetah-nova::resources.deliveries.plural'),
+                'deliveries',
+                \Waygou\XheetahNova\Resources\Delivery::class
+            ),
         ];
     }
 }

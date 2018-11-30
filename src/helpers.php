@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Waygou\Xheetah\Models\UserLog;
 
-function xheetah_trans($trans)
+/*function trans($trans)
 {
     return __('xheetah-nova::'.$trans);
 }
+*/
 
 function langHas($phrase, $lang, $default = 'en')
 {

@@ -50,20 +50,32 @@ class ClientUser extends XheetahResource
                     return user_is('super-admin');
                 }),
 
-            Text::make(trans('xheetah-nova::fields.common.name'), 'name'),
+            Text::make(
+                trans('xheetah-nova::fields.common.name'),
+                'name'
+            ),
 
-            Email::make(trans('xheetah-nova::fields.common.email'), 'email')
+            Email::make(
+                trans('xheetah-nova::fields.common.email'),
+                'email'
+            )
                  ->hideFromIndex()
                  ->clickable(),
 
-            Text::make(trans('xheetah-nova::fields.common.phone'), 'phone')
+            Text::make(
+                trans('xheetah-nova::fields.common.phone'),
+                'phone'
+            )
                 ->hideFromIndex(),
 
             /*
              * Password is only shown in case it's:
              * A super-admin, admin, or the own user.
              */
-            Password::make(trans('xheetah-nova::fields.common.password'), 'password')
+            Password::make(
+                trans('xheetah-nova::fields.common.password'),
+                'password'
+            )
                     ->creationRules('required', 'min:6')
                     ->updateRules('nullable', 'min:6')
                     ->canSee(function ($request) {
@@ -73,27 +85,45 @@ class ClientUser extends XheetahResource
                     ->help(trans('xheetah-nova::help.client_user.password'))
                     ->onlyOnForms(),
 
-            Boolean::make(trans('xheetah-nova::fields.common.is_active'), 'is_active')
+            Boolean::make(
+                trans('xheetah-nova::fields.common.is_active'),
+                'is_active'
+            )
                    ->canSee(function ($request) {
                        return user_is(['super-admin', 'admin', 'client-admin']);
                    }),
 
             // Computed field: Does this client user has a client-admin profile code?
-            Boolean::make(trans('xheetah-nova::fields.common.is_admin'), function () {
-                return $this->profiles->pluck('code')->contains('client-admin');
-            })->canSee(function ($request) {
-                return user_is(['super-admin', 'admin']);
+            Boolean::make(
+                trans('xheetah-nova::fields.common.is_admin'),
+                function () {
+                    return $this->profiles->pluck('code')->contains('client-admin');
+                }
+            )->canSee(function ($request) {
+                    return user_is(['super-admin', 'admin']);
             }),
 
-            BelongsToMany::make(trans('xheetah-nova::resources.profiles.plural'), 'profiles', \Waygou\SurveyorNova\Resources\Profile::class)
+            BelongsToMany::make(
+                trans('xheetah-nova::resources.profiles.plural'),
+                'profiles',
+                \Waygou\SurveyorNova\Resources\Profile::class
+            )
                          ->canSee(function ($request) {
                              return user_is(['super-admin', 'admin']);
                          }),
 
-            BelongsTo::make(trans('xheetah-nova::resources.clients.singular'), 'client', \Waygou\XheetahNova\Resources\Client::class),
+            BelongsTo::make(
+                trans('xheetah-nova::resources.clients.singular'),
+                'client',
+                \Waygou\XheetahNova\Resources\Client::class
+            ),
 
             // By default the main role is computed in the model observer.
-            BelongsTo::make(trans('xheetah-nova::fields.client_users.main_role'), 'mainRole', \Waygou\XheetahNova\Resources\MainRole::class)
+            BelongsTo::make(
+                trans('xheetah-nova::fields.client_users.main_role'),
+                'mainRole',
+                \Waygou\XheetahNova\Resources\MainRole::class
+            )
                      ->canSee(function ($request) {
                          return user_is(['super-admin', 'admin']);
                      })
