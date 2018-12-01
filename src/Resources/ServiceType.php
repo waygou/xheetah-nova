@@ -2,10 +2,10 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Text;
+use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
@@ -27,7 +27,7 @@ class ServiceType extends XheetahResource
         'client'       => ['name'],
     ];
 
-    public static $with = [];
+    public static $with = ['durationType', 'vehicleType', 'client'];
 
     public static function group()
     {
@@ -39,26 +39,65 @@ class ServiceType extends XheetahResource
         return [
             ID::make()
               ->sortable()
-              ->onlyOnForms(),
+              ->canSee(function ($request) {
+                  return user_is('super-admin');
+              }),
 
-            Text::make(trans('xheetah-nova::fields.name'), 'name'),
+            Text::make(
+                trans('xheetah-nova::fields.common.name'),
+                'name'
+            )->rules('required'),
 
-            Text::make(trans('xheetah-nova::fields.code'), 'code'),
+            Text::make(
+                trans('xheetah-nova::fields.common.code'),
+                'code'
+            )->creationRules('unique:tenant.service_types,code', 'max:191')
+             ->updateRules('unique:tenant.service_types,code,{{resourceId}}'),
 
-            BelongsTo::make(trans('xheetah-nova::fields.duration_type'), 'durationType', \Waygou\XheetahNova\Resources\DurationType::class),
+            BelongsTo::make(
+                trans('xheetah-nova::fields.service_types.duration_type'),
+                'durationType',
+                \Waygou\XheetahNova\Resources\DurationType::class
+            )->rules('required'),
 
-            BelongsTo::make(trans('xheetah-nova::fields.vehicle_type'), 'vehicleType', \Waygou\XheetahNova\Resources\VehicleType::class),
+            BelongsTo::make(
+                trans('xheetah-nova::fields.service_types.vehicle_type'),
+                'vehicleType',
+                \Waygou\XheetahNova\Resources\VehicleType::class
+            )->rules('required'),
 
-            BelongsTo::make(trans('xheetah-nova::fields.client'), 'client', \Waygou\XheetahNova\Resources\Client::class)
-                     ->help(trans('xheetah-nova::help.service_type.client')),
+            BelongsTo::make(
+                trans('xheetah-nova::fields.common.client'),
+                'client',
+                \Waygou\XheetahNova\Resources\Client::class
+            )->nullable()
+             ->help(
+                 trans('xheetah-nova::help.service_types.client')
+             ),
 
-            Number::make(trans('xheetah-nova::fields.price_request'), 'price_request')->step(0.01),
+            Number::make(
+                trans('xheetah-nova::fields.service_types.price_request'),
+                'price_request'
+            )->step(0.01)
+             ->rules('required'),
 
-            Number::make(trans('xheetah-nova::fields.price_request_additional'), 'price_request_additional')->step(0.01),
+            Number::make(
+                trans('xheetah-nova::fields.service_types.price_request_additional'),
+                'price_request_additional'
+            )->step(0.01)
+             ->rules('required'),
 
-            Number::make(trans('xheetah-nova::fields.price_km'), 'price_km')->step(0.01),
+            Number::make(
+                trans('xheetah-nova::fields.service_types.price_km'),
+                'price_km'
+            )->step(0.01)
+             ->rules('required'),
 
-            Number::make(trans('xheetah-nova::fields.price_km_additional'), 'price_km_additional')->step(0.01),
+            Number::make(
+                trans('xheetah-nova::fields.service_types.price_km_additional'),
+                'price_km_additional'
+            )->step(0.01)
+             ->rules('required'),
 
         ];
     }

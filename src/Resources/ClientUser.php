@@ -53,14 +53,14 @@ class ClientUser extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.common.name'),
                 'name'
-            ),
+            )->rules('required'),
 
             Email::make(
                 trans('xheetah-nova::fields.common.email'),
                 'email'
-            )
-                 ->hideFromIndex()
-                 ->clickable(),
+            )->rules('required', 'email')
+             ->hideFromIndex()
+             ->clickable(),
 
             Text::make(
                 trans('xheetah-nova::fields.common.phone'),

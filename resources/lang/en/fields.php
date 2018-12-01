@@ -80,6 +80,7 @@ return [
     'common' => [
         'address'       => 'Address',
         'city'          => 'City',
+        'client'        => 'Client',
         'code'          => 'Code',
         'courier'       => 'Courier',
         'comments'      => 'Comments',
@@ -134,6 +135,15 @@ return [
 
     'client_users' => [
         'main_role' => 'Main Role',
+    ],
+
+    'service_types' => [
+        'duration_type' => 'Duration Type',
+        'vehicle_type'  => 'Vehicle Type',
+        'price_request' => 'Price Request',
+        'price_request_additional' => 'Additional Price Request',
+        'price_km'                 => 'Price per Km',
+        'price_km_additional'      => 'Additional Price per Km'
     ],
 
     'deliveries'               => [

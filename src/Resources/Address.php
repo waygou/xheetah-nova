@@ -55,15 +55,13 @@ class Address extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.common.name'),
                 'name'
-            )
-                ->rules('required')
-                ->help(trans('xheetah-nova::help.addresses.name')),
+            )->rules('required')
+             ->help(trans('xheetah-nova::help.addresses.name')),
 
             Place::make(
                 trans('xheetah-nova::fields.common.address'),
                 'address'
-            )
-                ->rules('required'),
+            )->rules('required'),
 
             Text::make(
                 trans('xheetah-nova::fields.common.floor_number'),
@@ -78,8 +76,7 @@ class Address extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.common.city'),
                 'city'
-            )
-                ->hideFromIndex(),
+            )->hideFromIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.common.locality'),
@@ -89,18 +86,16 @@ class Address extends XheetahResource
             Country::make(
                 trans('xheetah-nova::fields.common.country'),
                 'country_code'
-            )
-                ->rules('required')
-                ->onlyOnForms()
-                ->hideFromIndex()
-                ->hideFromDetail(),
+            )->rules('required')
+             ->onlyOnForms()
+             ->hideFromIndex()
+             ->hideFromDetail(),
 
             Text::make(
                 trans('xheetah-nova::fields.common.country'),
                 'country'
-            )
-                ->hidden()
-                ->hideFromIndex(),
+            )->hidden()
+             ->hideFromIndex(),
 
             Map::make(
                 trans('xheetah-nova::fields.common.map'),
