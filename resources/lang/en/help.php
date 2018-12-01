@@ -15,7 +15,7 @@ return [
 
     'duration_types' => [
         'next_day_deadline' => 'If this service type is requested after the deadline, until when it will be delivered in the next day?',
-        'requested_until' => 'Until when, in the same day, can this duration type service be requested.'
+        'requested_until'   => 'Until when, in the same day, can this duration type service be requested.',
     ],
 
     'service_types' => [

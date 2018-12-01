@@ -106,9 +106,9 @@ return [
     ],
 
     'duration_types' => [
-        'requested_until' => 'Requested Until',
-        'time_type'       => 'Time Type',
-        'next_day_deadline' => 'Next Day Deadline'
+        'requested_until'   => 'Requested Until',
+        'time_type'         => 'Time Type',
+        'next_day_deadline' => 'Next Day Deadline',
     ],
 
     'vehicles' => [
