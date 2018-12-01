@@ -2,14 +2,14 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\Text;
+use Inspheric\Fields\Email;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
+use Laravel\Nova\Fields\Text;
 use Waygou\NovaUx\Components\Fields\Topic;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
@@ -22,13 +22,13 @@ class Client extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'name', 'fiscal_number', 'contact_name'
+        'name', 'fiscal_number', 'contact_name',
     ];
 
     public static $with = ['users',
                            'costCenters',
                            'addresses',
-                           'deliveries'];
+                           'deliveries', ];
 
     public static function group()
     {
