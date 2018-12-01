@@ -2,14 +2,14 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
 use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\MorphMany;
-use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\NovaUx\Components\Fields\Topic;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
@@ -22,13 +22,13 @@ class Client extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'name', 'fiscal_number',
+        'name', 'fiscal_number', 'contact_name'
     ];
 
     public static $with = ['users',
                            'costCenters',
                            'addresses',
-                           'deliveries', ];
+                           'deliveries'];
 
     public static function group()
     {
@@ -49,36 +49,33 @@ class Client extends XheetahResource
                     return user_is('super-admin');
                 }),
 
-            Topic::make(trans('xheetah-nova::topics.clients.identification'))
-                 ->withSVG('folder-outline'),
+            Topic::make(
+                trans('xheetah-nova::topics.clients.identification')
+            )->withSVG('folder-outline'),
 
             Text::make(
                 trans('xheetah-nova::fields.common.name'),
                 'name'
-            )
-                ->rules('required')
-                ->help(trans('xheetah-nova::help.clients.name')),
+            )->rules('required')
+             ->help(trans('xheetah-nova::help.clients.name')),
 
             Text::make(
                 trans('xheetah-nova::fields.clients.social_designation'),
                 'social_name'
-            )
-                ->rules('required')
-                ->onlyOnForms(),
+            )->rules('required')
+             ->onlyOnForms(),
 
             Date::make(
                 trans('xheetah-nova::fields.clients.contract_starts_at'),
                 'contract_start'
-            )
-                ->help(trans('xheetah-nova::help.clients.contract_starts_at'))
-                ->rules('required')
-                ->onlyOnForms(),
+            )->help(trans('xheetah-nova::help.clients.contract_starts_at'))
+             ->rules('required')
+             ->onlyOnForms(),
 
             Text::make(
                 trans('xheetah-nova::fields.clients.fiscal_number'),
                 'fiscal_number'
-            )
-                ->onlyOnForms(),
+            )->onlyOnForms(),
 
             Boolean::make(
                 trans('xheetah-nova::fields.clients.active'),
@@ -110,8 +107,8 @@ class Client extends XheetahResource
                 ->clickableOnIndex()
                 ->clickable()
                 ->sortable()
-                ->creationRules('unique:tenant.users,email', 'max:191')
-                ->updateRules('unique:tenant.users,email,{{resourceId}}')
+                ->creationRules('unique:tenant.users,email', 'required', 'email')
+                ->updateRules('unique:tenant.users,email,{{resourceId}}', 'required', 'email')
                 ->onlyOnForms(),
 
             Topic::make(trans('xheetah-nova::topics.clients.integration'))
