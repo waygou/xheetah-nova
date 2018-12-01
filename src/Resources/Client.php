@@ -90,26 +90,23 @@ class Client extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.clients.contact_name'),
                 'contact_name'
-            )
-                ->rules('required')
-                ->hideFromIndex(),
+            )->rules('required')
+             ->hideFromIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.clients.contact_phone'),
                 'contact_phone'
-            )
-                ->hideFromIndex(),
+            )->hideFromIndex(),
 
             Email::make(
                 trans('xheetah-nova::fields.common.email'),
-                'email'
-            )
-                ->clickableOnIndex()
-                ->clickable()
-                ->sortable()
-                ->creationRules('unique:tenant.users,email', 'required', 'email')
-                ->updateRules('unique:tenant.users,email,{{resourceId}}', 'required', 'email')
-                ->onlyOnForms(),
+                'contact_email'
+            )->clickableOnIndex()
+             ->clickable()
+             ->sortable()
+             ->creationRules('unique:tenant.users,email', 'required', 'email')
+             ->updateRules('unique:tenant.users,email,{{resourceId}}', 'required', 'email')
+             ->onlyOnForms(),
 
             Topic::make(trans('xheetah-nova::topics.clients.integration'))
                  ->onlyOnDetail()
@@ -118,12 +115,11 @@ class Client extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.clients.api_token'),
                 'api_token'
-            )
-                ->onlyOnDetail()
-                ->canSee(function ($request) {
-                    return user_is(['super-admin', 'admin', 'client-admin']);
-                })
-                ->help(trans('xheetah-nova::help.clients.api_token')),
+            )->onlyOnDetail()
+             ->canSee(function ($request) {
+                 return user_is(['super-admin', 'admin', 'client-admin']);
+             })
+             ->help(trans('xheetah-nova::help.clients.api_token')),
 
             HasMany::make(
                 trans('xheetah-nova::resources.cost_centers.plural'),
