@@ -50,13 +50,13 @@ class Courier extends XheetahResource
               }),
 
             Text::make(
-                trans('fields.common.name'),
+                trans('xheetah-nova::fields.common.name'),
                 'name'
             )
                 ->rules('required', 'max:191'),
 
             Email::make(
-                trans('fields.common.email'),
+                trans('xheetah-nova::fields.common.email'),
                 'email'
             )
                 ->clickableOnIndex()
@@ -67,7 +67,7 @@ class Courier extends XheetahResource
                 ->onlyOnForms(),
 
             Password::make(
-                trans('fields.common.password'),
+                trans('xheetah-nova::fields.common.password'),
                 'password'
             )
                     ->creationRules('required', 'min:6')
@@ -80,13 +80,13 @@ class Courier extends XheetahResource
                     ->onlyOnForms(),
 
             Text::make(
-                trans('fields.common.phone'),
+                trans('xheetah-nova::fields.common.phone'),
                 'phone'
             )
                 ->onlyOnForms(),
 
             Boolean::make(
-                trans('fields.common.is_active'),
+                trans('xheetah-nova::fields.common.is_active'),
                 'is_active'
             )
                     ->canSee(function ($request) {

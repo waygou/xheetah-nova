@@ -12,7 +12,11 @@ return [
 
     'registration'      => 'A custom vehicle code',
     'requested_until'   => 'Until when in the day can this service type be requested?',
-    'next_day_deadline' => 'If this service type is requested after the deadline, until when it will be delivered in the next day?',
+
+    'duration_types' => [
+        'next_day_deadline' => 'If this service type is requested after the deadline, until when it will be delivered in the next day?',
+        'requested_until' => 'Until when, in the same day, can this duration type service be requested.'
+    ],
 
     'service_types' => [
         'client' => 'In case this service type have a specific price for a specific client',

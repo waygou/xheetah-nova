@@ -87,6 +87,8 @@ return [
         'contact_phone' => 'Contact Phone',
         'contact_email' => 'Contact Email',
         'country'       => 'Country',
+        'description'   => 'Description',
+        'duration'      => 'Duration',
         'email'         => 'E-mail',
         'floor_number'  => 'Floor number',
         'license_plate' => 'License Plate',
@@ -101,6 +103,12 @@ return [
         'registration'  => 'Registration',
         'since'         => 'Since',
         'vehicle'       => 'Vehicle',
+    ],
+
+    'duration_types' => [
+        'requested_until' => 'Requested Until',
+        'time_type'       => 'Time Type',
+        'next_day_deadline' => 'Next Day Deadline'
     ],
 
     'vehicles' => [

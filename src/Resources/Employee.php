@@ -70,7 +70,7 @@ class Employee extends XheetahResource
             ),
 
             Password::make(
-                trans('fields.common.password'),
+                trans('xheetah-nova::fields.common.password'),
                 'password'
             )
                     ->creationRules('required', 'min:6')
@@ -83,7 +83,7 @@ class Employee extends XheetahResource
                     ->onlyOnForms(),
 
             Boolean::make(
-                trans('fields.common.is_active'),
+                trans('xheetah-nova::fields.common.is_active'),
                 'is_active'
             )
                     ->canSee(function ($request) {

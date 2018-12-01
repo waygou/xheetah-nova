@@ -104,7 +104,7 @@ class Client extends XheetahResource
                 ->hideFromIndex(),
 
             Email::make(
-                trans('fields.common.email'),
+                trans('xheetah-nova::fields.common.email'),
                 'email'
             )
                 ->clickableOnIndex()

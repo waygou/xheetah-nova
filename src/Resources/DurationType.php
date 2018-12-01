@@ -40,28 +40,28 @@ class DurationType extends XheetahResource
             ID::make()->sortable()->onlyOnForms(),
 
             Text::make(
-                trans('xheetah-nova::fields.name'),
+                trans('xheetah-nova::fields.common.name'),
                 'name'
             ),
 
             Text::make(
-                trans('xheetah-nova::fields.description'),
+                trans('xheetah-nova::fields.common.description'),
                 'description'
             ),
 
             TimeField::make(
-                trans('xheetah-nova::fields.requested_until'),
+                trans('xheetah-nova::fields.duration_types.requested_until'),
                 'requested_until'
             )
-                     ->help(trans('xheetah-nova::help.requested_until')),
+                     ->help(trans('xheetah-nova::help.duration_types.requested_until')),
 
             Text::make(
-                trans('xheetah-nova::fields.duration'),
+                trans('xheetah-nova::fields.common.duration'),
                 'duration'
             ),
 
             Select::make(
-                trans('xheetah-nova::fields.time_type'),
+                trans('xheetah-nova::fields.duration_types.time_type'),
                 'time_type'
             )->options([
                 'H' => 'Hours',
@@ -70,13 +70,13 @@ class DurationType extends XheetahResource
                 ])->displayUsingLabels(),
 
             TimeField::make(
-                trans('xheetah-nova::fields.next_day_deadline'),
+                trans('xheetah-nova::fields.duration_types.next_day_deadline'),
                 'next_day_deadline'
             )
-            ->help(trans('xheetah-nova::help.next_day_deadline')),
+            ->help(trans('xheetah-nova::help.duration_types.next_day_deadline')),
 
             HasMany::make(
-                trans('xheetah-nova::fields.service_types'),
+                trans('xheetah-nova::fields.common.service_types'),
                 'serviceTypes',
                 \Waygou\XheetahNova\Resources\ServiceType::class
             ),
