@@ -29,7 +29,7 @@ class Delivery extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'id', 'origin_address', 'destination_address',
+        'origin_address', 'destination_address',
     ];
 
     public static $searchRelations = [

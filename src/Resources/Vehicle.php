@@ -19,7 +19,7 @@ class Vehicle extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'id', 'brandmodel', 'registration',  'license_plate',
+        'brandmodel', 'registration',  'license_plate',
     ];
 
     public static $with = ['user', 'vehicleType'];

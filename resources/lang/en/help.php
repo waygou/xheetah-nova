@@ -2,16 +2,9 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Help Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | //
-    */
-
-    'registration'      => 'A custom vehicle code',
-    'requested_until'   => 'Until when in the day can this service type be requested?',
+    'vehicles' => [
+        'registration'      => 'A custom vehicle code',
+    ],
 
     'duration_types' => [
         'next_day_deadline' => 'If this service type is requested after the deadline, until when it will be delivered in the next day?',

@@ -21,7 +21,7 @@ class User extends XheetahResource
     public static $title = 'name';
 
     public static $search = [
-        'id', 'name', 'email', 'phone',
+        'name', 'email', 'phone',
     ];
 
     public static $searchRelations = [

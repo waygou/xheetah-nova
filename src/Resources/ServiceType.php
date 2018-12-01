@@ -18,7 +18,7 @@ class ServiceType extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'id', 'name',
+        'name',
     ];
 
     public static $searchRelations = [

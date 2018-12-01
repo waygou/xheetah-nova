@@ -17,7 +17,7 @@ class VehicleType extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'id', 'name',
+        'name',
     ];
 
     public static $with = [];
@@ -32,10 +32,22 @@ class VehicleType extends XheetahResource
         return [
             ID::make()->sortable()->onlyOnForms(),
 
-            Text::make(trans('xheetah-nova::fields.name'), 'name'),
-            Text::make(trans('xheetah-nova::fields.code'), 'code'),
+            Text::make(
+                trans('xheetah-nova::fields.common.name'),
+                'name'
+            ),
 
-            HasMany::make(trans('xheetah-nova::fields.vehicles'), 'vehicles', \Waygou\XheetahNova\Resources\Vehicle::class),
+            Text::make(
+                trans('xheetah-nova::fields.common.code'),
+                'code'
+            )->creationRules('unique:tenant.vehicle_types,code', 'max:191')
+             ->updateRules('unique:tenant.vehicle_types,code,{{resourceId}}'),
+
+            HasMany::make(
+                trans('xheetah-nova::resources.vehicles.plural'),
+                'vehicles',
+                \Waygou\XheetahNova\Resources\Vehicle::class
+            ),
         ];
     }
 }

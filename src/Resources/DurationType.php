@@ -19,7 +19,7 @@ class DurationType extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'id', 'name', 'description',
+        'name', 'description',
     ];
 
     public static $with = [];
@@ -76,7 +76,7 @@ class DurationType extends XheetahResource
             ->help(trans('xheetah-nova::help.duration_types.next_day_deadline')),
 
             HasMany::make(
-                trans('xheetah-nova::fields.common.service_types'),
+                trans('xheetah-nova::resources.service_types.plural'),
                 'serviceTypes',
                 \Waygou\XheetahNova\Resources\ServiceType::class
             ),

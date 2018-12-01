@@ -21,7 +21,7 @@ class Employee extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'id', 'name', 'email', 'phone',
+        'name', 'email', 'phone',
     ];
 
     public static $with = ['client', 'mainRole', 'profiles'];
