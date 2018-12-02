@@ -40,5 +40,6 @@ return [
         'api_token'          => 'Private token key used for all API transactions',
         'name'               => 'Client commercial name',
         'contract_starts_at' => 'Start date where the Client can request deliveries',
+        'is_active'          => 'If the status changes, the main contact will be notified by email.',
     ],
 ];

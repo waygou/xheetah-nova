@@ -80,11 +80,12 @@ class Client extends XheetahResource
             Boolean::make(
                 trans('xheetah-nova::fields.clients.active'),
                 'is_active'
-            )->canSee(function ($request) {
+            )->help(trans('xheetah-nova::help.clients.is_active'))
+            ->canSee(function ($request) {
                 return user_is(['super-admin', 'admin', 'client-admin']);
             })->hideFromIndex(),
 
-            Topic::make(trans('xheetah-nova::topics.clients.user_admin'))
+            Topic::make(trans('xheetah-nova::topics.clients.contact_admin'))
                  ->withSVG('user'),
 
             Text::make(

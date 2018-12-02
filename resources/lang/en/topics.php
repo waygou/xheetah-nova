@@ -17,10 +17,14 @@ return [
     'naming'                    => 'Main Identification',
     'client_admin_contact'      => 'User Admin Data',
 
+    'common' => [
+        'identification' => 'Identification',
+    ],
+
     'clients' => [
         'location'       => 'Location',
         'identification' => 'Identification',
-        'user_admin'     => 'User Admin',
+        'contact_admin'  => 'Contact Admin',
         'integration'    => 'Integration',
     ],
 
