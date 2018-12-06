@@ -20,9 +20,9 @@ return [
         'plural'   => 'Deliveries',
     ],
 
-    'service_types' => [
-        'singular' => 'Service Type',
-        'plural'   => 'Service Types',
+    'delivery_types' => [
+        'singular' => 'Delivery Type',
+        'plural'   => 'Delivery Types',
     ],
 
     'vehicle_types' => [

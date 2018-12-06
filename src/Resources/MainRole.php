@@ -41,12 +41,6 @@ class MainRole extends XheetahResource
                 'name'
             ),
 
-            Text::make(
-                trans('xheetah-nova::fields.common.code'),
-                'code'
-            )->creationRules('unique:tenant.main_roles,code', 'max:191')
-             ->updateRules('unique:tenant.main_roles,code,{{resourceId}}'),
-
             HasMany::make(
                 trans('xheetah-nova::resources.users.plural'),
                 'users',

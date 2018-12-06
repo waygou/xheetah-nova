@@ -9,9 +9,9 @@ use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
-class ServiceType extends XheetahResource
+class DeliveryType extends XheetahResource
 {
-    public static $model = \Waygou\Xheetah\Models\ServiceType::class;
+    public static $model = \Waygou\Xheetah\Models\DeliveryType::class;
 
     public static $title = 'name';
 
@@ -48,20 +48,14 @@ class ServiceType extends XheetahResource
                 'name'
             )->rules('required'),
 
-            Text::make(
-                trans('xheetah-nova::fields.common.code'),
-                'code'
-            )->creationRules('unique:tenant.service_types,code', 'max:191')
-             ->updateRules('unique:tenant.service_types,code,{{resourceId}}'),
-
             BelongsTo::make(
-                trans('xheetah-nova::fields.service_types.duration_type'),
+                trans('xheetah-nova::fields.delivery_types.duration_type'),
                 'durationType',
                 \Waygou\XheetahNova\Resources\DurationType::class
             )->rules('required'),
 
             BelongsTo::make(
-                trans('xheetah-nova::fields.service_types.vehicle_type'),
+                trans('xheetah-nova::fields.delivery_types.vehicle_type'),
                 'vehicleType',
                 \Waygou\XheetahNova\Resources\VehicleType::class
             )->rules('required'),
@@ -72,29 +66,29 @@ class ServiceType extends XheetahResource
                 \Waygou\XheetahNova\Resources\Client::class
             )->nullable()
              ->help(
-                 trans('xheetah-nova::help.service_types.client')
+                 trans('xheetah-nova::help.delivery_types.client')
              ),
 
             Number::make(
-                trans('xheetah-nova::fields.service_types.price_request'),
+                trans('xheetah-nova::fields.delivery_types.price_request'),
                 'price_request'
             )->step(0.01)
              ->rules('required'),
 
             Number::make(
-                trans('xheetah-nova::fields.service_types.price_request_additional'),
+                trans('xheetah-nova::fields.delivery_types.price_request_additional'),
                 'price_request_additional'
             )->step(0.01)
              ->rules('required'),
 
             Number::make(
-                trans('xheetah-nova::fields.service_types.price_km'),
+                trans('xheetah-nova::fields.delivery_types.price_km'),
                 'price_km'
             )->step(0.01)
              ->rules('required'),
 
             Number::make(
-                trans('xheetah-nova::fields.service_types.price_km_additional'),
+                trans('xheetah-nova::fields.delivery_types.price_km_additional'),
                 'price_km_additional'
             )->step(0.01)
              ->rules('required'),

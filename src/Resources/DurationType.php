@@ -76,9 +76,9 @@ class DurationType extends XheetahResource
             ->help(trans('xheetah-nova::help.duration_types.next_day_deadline')),
 
             HasMany::make(
-                trans('xheetah-nova::resources.service_types.plural'),
+                trans('xheetah-nova::resources.delivery_types.plural'),
                 'serviceTypes',
-                \Waygou\XheetahNova\Resources\ServiceType::class
+                \Waygou\XheetahNova\Resources\DeliveryType::class
             ),
         ];
     }

@@ -49,7 +49,7 @@ class Delivery extends XheetahResource
 
     public function subtitle()
     {
-        return "{$this->client->name}";
+        return "{$this->client->name} {$this->courier->name}";
     }
 
     public function fields(Request $request)
@@ -63,8 +63,7 @@ class Delivery extends XheetahResource
 
             Topic::make(
                 trans('xheetah-nova::topics.client_information')
-            )
-                  ->withSVG('icon-user'),
+            )->withSVG('icon-user'),
 
             BelongsTo::make(
                 trans('xheetah-nova::fields.deliveries.client'),
@@ -76,30 +75,27 @@ class Delivery extends XheetahResource
                 trans('xheetah-nova::fields.deliveries.cost_center'),
                 'costCenter',
                 \Waygou\XheetahNova\Resources\CostCenter::class
-            )
-            ->nullable()
-            ->startEmpty()
-            ->affectedBy(
-                'client',
-                'Waygou\Xheetah\Restrictions\CostCenterRestriction@restrictToClient'
-            ),
+            )->nullable()
+             ->startEmpty()
+             ->affectedBy(
+                 'client',
+                 'Waygou\Xheetah\Restrictions\CostCenterRestriction@restrictToClient'
+             ),
 
             Topic::make(
                 trans('xheetah-nova::topics.deliveries.delivery_type')
-            )
-                  ->withSVG('queue'),
+            )->withSVG('queue'),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.created_by'),
                 'created_by'
-            )
-                ->readonly()
-                ->onCreateDefault(Auth::user()->name),
+            )->readonly()
+             ->onCreateDefault(Auth::user()->name),
 
             BelongsTo::make(
                 trans('xheetah-nova::fields.deliveries.delivery_type'),
                 'serviceType',
-                \Waygou\XheetahNova\Resources\ServiceType::class
+                \Waygou\XheetahNova\Resources\DeliveryType::class
             ),
 
             Boolean::make(
@@ -114,23 +110,21 @@ class Delivery extends XheetahResource
 
             Topic::make(
                 trans('xheetah-nova::topics.deliveries.related_addresses')
-            )
-                  ->withSVG('inbox-full'),
+            )->withSVG('inbox-full'),
 
             Select::make(
                 trans('xheetah-nova::fields.deliveries.origin_related_address'),
                 'origin_related_address'
-            )
-                  ->nullable()
-                  ->startEmpty()
-                  ->affectedBy(
-                      'client',
-                      'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
-                  )
-                  ->affectedBy(
-                      'costCenter',
-                      'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
-                  ),
+            )->nullable()
+             ->startEmpty()
+             ->affectedBy(
+                 'client',
+                 'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
+             )
+             ->affectedBy(
+                 'costCenter',
+                 'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
+             ),
 
             Select::make(
                 trans('xheetah-nova::fields.deliveries.destination_related_address'),

@@ -30,18 +30,16 @@ class VehicleType extends XheetahResource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable()->onlyOnForms(),
+            ID::make()
+              ->sortable()
+              ->canSee(function ($request) {
+                  return user_is('super-admin');
+              }),
 
             Text::make(
                 trans('xheetah-nova::fields.common.name'),
                 'name'
-            ),
-
-            Text::make(
-                trans('xheetah-nova::fields.common.code'),
-                'code'
-            )->creationRules('unique:tenant.vehicle_types,code', 'max:191')
-             ->updateRules('unique:tenant.vehicle_types,code,{{resourceId}}'),
+            )->rules('required'),
 
             HasMany::make(
                 trans('xheetah-nova::resources.vehicles.plural'),

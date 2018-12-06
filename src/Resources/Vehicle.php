@@ -37,29 +37,53 @@ class Vehicle extends XheetahResource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable()->onlyOnForms(),
+            ID::make()
+              ->sortable()
+              ->canSee(function ($request) {
+                  return user_is('super-admin');
+              }),
 
-            Text::make(trans('xheetah-nova::fields.vehicles.brandmodel'), 'brandmodel'),
+            Text::make(
+                trans('xheetah-nova::fields.vehicles.brandmodel'),
+                'brandmodel'
+            )->rules('required'),
 
-            Date::make(trans('xheetah-nova::fields.common.since')),
+            Date::make(
+                trans('xheetah-nova::fields.common.since')
+            )->rules('required'),
 
-            Text::make(trans('xheetah-nova::fields.common.registration'))
+            Text::make(
+                trans('xheetah-nova::fields.common.registration')
+            )
                 ->help(trans('xheetah-nova::help.vehicles.registration')),
 
-            Text::make(trans('xheetah-nova::fields.common.license_plate')),
+            Text::make(
+                trans('xheetah-nova::fields.common.license_plate')
+            )->rules('required'),
 
-            Text::make(trans('xheetah-nova::fields.common.courier'), function () {
-                if (!is_null($this->user)) {
-                    return "<span via-resource='vehicles' via-resource-id='{$this->id}' class='text-left'><span><a href='/nova/resources/couriers/{$this->user->id}' class='no-underline dim text-primary font-bold'>{$this->user->name}</a></span></span>";
+            Text::make(
+                trans('xheetah-nova::fields.common.courier'),
+                function () {
+                    if (!is_null($this->user)) {
+                        return "<span via-resource='vehicles' via-resource-id='{$this->id}' class='text-left'><span><a href='/nova/resources/couriers/{$this->user->id}' class='no-underline dim text-primary font-bold'>{$this->user->name}</a></span></span>";
+                    }
+
+                    return '—';
                 }
-
-                return '—';
-            })->asHtml()
+            )->asHtml()
               ->onlyOnIndex(),
 
-            BelongsTo::make(trans('xheetah-nova::fields.vehicles.type'), 'vehicleType', \Waygou\XheetahNova\Resources\VehicleType::class),
+            BelongsTo::make(
+                trans('xheetah-nova::fields.vehicles.type'),
+                'vehicleType',
+                \Waygou\XheetahNova\Resources\VehicleType::class
+            ),
 
-            HasOne::make(trans('xheetah-nova::resources.couriers.singular'), 'user', \Waygou\XheetahNova\Resources\Courier::class),
+            HasOne::make(
+                trans('xheetah-nova::resources.couriers.singular'),
+                'user',
+                \Waygou\XheetahNova\Resources\Courier::class
+            ),
         ];
     }
 }

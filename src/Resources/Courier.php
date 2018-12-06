@@ -52,47 +52,42 @@ class Courier extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.common.name'),
                 'name'
-            )
-                ->rules('required', 'max:191'),
+            )->rules('required'),
 
             Email::make(
                 trans('xheetah-nova::fields.common.email'),
                 'email'
-            )
-                ->clickableOnIndex()
-                ->clickable()
-                ->sortable()
-                ->creationRules('unique:tenant.users,email', 'max:191')
-                ->updateRules('unique:tenant.users,email,{{resourceId}}')
-                ->onlyOnForms(),
+            )->clickableOnIndex()
+             ->clickable()
+             ->sortable()
+             ->creationRules('unique:tenant.users,email')
+             ->updateRules('unique:tenant.users,email,{{resourceId}}')
+             ->onlyOnForms(),
 
             Password::make(
                 trans('xheetah-nova::fields.common.password'),
                 'password'
-            )
-                    ->creationRules('required', 'min:6')
-                    ->updateRules('nullable', 'min:6')
-                    ->canSee(function ($request) {
-                        return user_is(['admin', 'super-admin']) ||
-                               $request->user()->id == $this->id;
-                    })
-                    ->help(trans('xheetah-nova::help.courier.password'))
-                    ->onlyOnForms(),
+            )->creationRules('required', 'min:6')
+             ->updateRules('nullable', 'min:6')
+             ->canSee(function ($request) {
+                 return user_is(['admin', 'super-admin']) ||
+                        $request->user()->id == $this->id;
+             })
+            ->help(trans('xheetah-nova::help.courier.password'))
+            ->onlyOnForms(),
 
             Text::make(
                 trans('xheetah-nova::fields.common.phone'),
                 'phone'
-            )
-                ->onlyOnForms(),
+            )->onlyOnForms(),
 
             Boolean::make(
                 trans('xheetah-nova::fields.common.is_active'),
                 'is_active'
-            )
-                    ->canSee(function ($request) {
-                        return user_is(['admin', 'super-admin']);
-                    })
-                   ->rules('required'),
+            )->canSee(function ($request) {
+                return user_is(['admin', 'super-admin']);
+            })
+            ->rules('required'),
 
             BelongsToMany::make(
                 trans('xheetah-nova::resources.profiles.plural'),

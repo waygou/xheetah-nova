@@ -10,74 +10,7 @@ return [
     | //
     */
 
-    /*
-    'name'                     => 'Name',
-    'email'                    => 'Email',
-    'phone'                    => 'Phone',
-    'password'                 => 'Password',
-    'is_active'                => 'Is active?',
-    'roles'                    => 'Roles',
-    'permissions'              => 'Permissions',
-    'fiscal_number'            => 'Fiscal number',
-    'code'                     => 'Code',
-    'contracted_at'            => 'Contracted at',
-    'social_name'              => 'Social designation',
-    'contact_name'             => 'Contact name',
-    'contact_phone'            => 'Contact phone',
-    'contact_email'            => 'Contact email',
-    'notes'                    => 'Notes',
-    'is_admin'                 => 'Is admin?',
-    'brandmodel'               => 'Brand and model',
-    'since'                    => 'Since',
-    'registration'             => 'Registration',
-    'license_plate'            => 'License plate',
-    'description'              => 'Description',
-    'duration'                 => 'Duration',
-    'duration_type'            => 'Duration type',
-    'next_day_deadline'        => 'Next day deadline',
-    'requested_until'          => 'Requested until',
-    'addressable'              => 'Addressable',
-    'profiles'                 => 'Profiles',
-    'main_role'                => 'Main Role',
-    'client'                   => 'Client',
-    'vehicle'                  => 'Vehicle',
-    'vehicle_type'             => 'Vehicle Type',
-    'time_type'                => 'Time Type',
-    'vehicles'                 => 'Vehicles',
-    'assigned_to'              => 'Assigned to',
-    'price_request'            => 'Price (request)',
-    'price_request_additional' => 'Price (request, additional)',
-    'price_km'                 => 'Price (km)',
-    'price_km_additional'      => 'Price (km, additional)',
-    'service_types'            => 'Service Types',
-    'cost_center'              => 'Cost Center',
-    'cost_centers'             => 'Cost Centers',
-    'client_users'             => 'Client Users',
-    'client_user'              => 'Client User',
-    'service_type'             => 'Service Type',
-    'delivery'                 => 'Delivery',
-    'costcenter'               => 'Cost Center',
-    'clientuser'               => 'Client User',
-    'clientusers'              => 'Client Users',
-    'deliveries'               => 'Deliveries',
-    'costcenters'              => 'Cost Centers',
-    'clientusers'              => 'Client Users',
-    'courier'                  => 'Courier',
-    'client_addresses'         => 'Client Addresses',
-    'cost_center_addresses'    => 'Cost Center Addresses',
-    'preloaded_addresses'      => 'Pre-loaded Addresses',
-    'address'                  => 'Address',
-    'postal_code'              => 'Postal Code',
-    'city'                     => 'City',
-    'locality'                 => 'Locality',
-    'country_code'             => 'Country Code',
-    'lat_lng'                  => 'Latitude / Longitude',
-    'country'                  => 'Country',
-    'map'                      => 'Map',
-    'api_token'                => 'Token API',
-    */
-
-    'common' => [
+        'common' => [
         'address'       => 'Address',
         'city'          => 'City',
         'client'        => 'Client',
@@ -104,20 +37,20 @@ return [
         'registration'  => 'Registration',
         'since'         => 'Since',
         'vehicle'       => 'Vehicle',
-    ],
+        ],
 
-    'duration_types' => [
+        'duration_types' => [
         'requested_until'   => 'Requested Until',
         'time_type'         => 'Time Type',
         'next_day_deadline' => 'Next Day Deadline',
-    ],
+        ],
 
-    'vehicles' => [
+        'vehicles' => [
         'brandmodel' => 'Brand / Model',
         'type'       => 'Type',
-    ],
+        ],
 
-    'clients' => [
+        'clients' => [
         'social_designation' => 'Legal Name',
         'contract_starts_at' => 'Contract Start Date',
         'fiscal_number'      => 'Fiscal Number',
@@ -126,27 +59,27 @@ return [
         'contact_phone'      => 'Contact Phone',
         'api_token'          => 'API Token',
         'active'             => 'Is Active?',
-    ],
+        ],
 
-    'addresses' => [
+        'addresses' => [
         'addressable' => 'Related to ',
 
-    ],
+        ],
 
-    'client_users' => [
+        'client_users' => [
         'main_role' => 'Main Role',
-    ],
+        ],
 
-    'service_types' => [
+        'delivery_types' => [
         'duration_type'            => 'Duration Type',
         'vehicle_type'             => 'Vehicle Type',
         'price_request'            => 'Price Request',
         'price_request_additional' => 'Additional Price Request',
         'price_km'                 => 'Price per Km',
         'price_km_additional'      => 'Additional Price per Km',
-    ],
+        ],
 
-    'deliveries'               => [
+        'deliveries'               => [
         'client'                      => 'Client',
         'cost_center'                 => 'Cost Center',
         'notes'                       => 'Notes',
@@ -169,5 +102,5 @@ return [
         'schedule_planned_at'         => 'Schedule Planned At',
         'comments_courier'            => 'Comments made by Courier',
         'comments_internal'           => 'Comments made internally',
-    ],
+        ],
 ];

@@ -13,7 +13,7 @@ use Waygou\XheetahNova\Resources\Delivery;
 use Waygou\XheetahNova\Resources\DurationType;
 use Waygou\XheetahNova\Resources\Employee;
 use Waygou\XheetahNova\Resources\MainRole;
-use Waygou\XheetahNova\Resources\ServiceType;
+use Waygou\XheetahNova\Resources\DeliveryType;
 use Waygou\XheetahNova\Resources\Test;
 use Waygou\XheetahNova\Resources\User;
 use Waygou\XheetahNova\Resources\Vehicle;
@@ -40,7 +40,7 @@ class XheetahNova extends Tool
             Vehicle::class,
             DurationType::class,
             VehicleType::class,
-            ServiceType::class,
+            DeliveryType::class,
             Delivery::class,
             Test::class,
         ]);
