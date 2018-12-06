@@ -4,20 +4,20 @@ namespace Waygou\XheetahNova;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
-use Waygou\XheetahNova\Resources\Address;
-use Waygou\XheetahNova\Resources\Client;
-use Waygou\XheetahNova\Resources\ClientUser;
-use Waygou\XheetahNova\Resources\CostCenter;
-use Waygou\XheetahNova\Resources\Courier;
-use Waygou\XheetahNova\Resources\Delivery;
-use Waygou\XheetahNova\Resources\DurationType;
-use Waygou\XheetahNova\Resources\Employee;
-use Waygou\XheetahNova\Resources\MainRole;
-use Waygou\XheetahNova\Resources\DeliveryType;
 use Waygou\XheetahNova\Resources\Test;
 use Waygou\XheetahNova\Resources\User;
+use Waygou\XheetahNova\Resources\Client;
+use Waygou\XheetahNova\Resources\Address;
+use Waygou\XheetahNova\Resources\Courier;
 use Waygou\XheetahNova\Resources\Vehicle;
+use Waygou\XheetahNova\Resources\Delivery;
+use Waygou\XheetahNova\Resources\Employee;
+use Waygou\XheetahNova\Resources\MainRole;
+use Waygou\XheetahNova\Resources\ClientUser;
+use Waygou\XheetahNova\Resources\CostCenter;
 use Waygou\XheetahNova\Resources\VehicleType;
+use Waygou\XheetahNova\Resources\DeliveryType;
+use Waygou\XheetahNova\Resources\DurationType;
 
 class XheetahNova extends Tool
 {

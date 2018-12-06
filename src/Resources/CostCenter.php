@@ -2,15 +2,15 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
 use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\MorphMany;
-use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\NovaUx\Components\Fields\Text;
-use Waygou\NovaUx\Components\Fields\Textarea;
 use Waygou\NovaUx\Components\Fields\Topic;
+use Waygou\NovaUx\Components\Fields\Textarea;
+use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class CostCenter extends XheetahResource

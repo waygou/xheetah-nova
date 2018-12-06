@@ -2,12 +2,12 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Waygou\NovaUx\Components\Fields\BelongsTo;
+use Illuminate\Http\Request;
+use Waygou\Xheetah\Models\Address;
 use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\NovaUx\Components\Fields\Topic;
-use Waygou\Xheetah\Models\Address;
+use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class Test extends XheetahResource

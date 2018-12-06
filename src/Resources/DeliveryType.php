@@ -2,11 +2,11 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
-use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\NovaUx\Components\Fields\Text;
+use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class DeliveryType extends XheetahResource

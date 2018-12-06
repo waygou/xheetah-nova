@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Waygou\Xheetah\Models\UserLog;
+use Illuminate\Support\Facades\Auth;
 
 /*function trans($trans)
 {
