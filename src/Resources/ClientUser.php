@@ -2,13 +2,13 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
 use Inspheric\Fields\Email;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\BelongsToMany;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 

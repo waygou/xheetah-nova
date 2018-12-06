@@ -2,22 +2,22 @@
 
 namespace Waygou\XheetahNova\Resources;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Laravel\Nova\Fields\Number;
+use Waygou\Xheetah\Models\User;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
-use Waygou\NovaUx\Components\Fields\BelongsTo;
-use Waygou\NovaUx\Components\Fields\Map;
-use Waygou\NovaUx\Components\Fields\Place;
-use Waygou\NovaUx\Components\Fields\Select;
-use Waygou\NovaUx\Components\Fields\Text;
-use Waygou\NovaUx\Components\Fields\Textarea;
-use Waygou\NovaUx\Components\Fields\Topic;
 use Waygou\Xheetah\Models\Client;
-use Waygou\Xheetah\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Waygou\NovaUx\Components\Fields\Map;
+use Waygou\NovaUx\Components\Fields\Text;
+use Waygou\NovaUx\Components\Fields\Place;
+use Waygou\NovaUx\Components\Fields\Topic;
+use Waygou\NovaUx\Components\Fields\Select;
+use Waygou\NovaUx\Components\Fields\Textarea;
+use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class Delivery extends XheetahResource

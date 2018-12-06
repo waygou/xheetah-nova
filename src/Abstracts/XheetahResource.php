@@ -5,10 +5,10 @@ namespace Waygou\XheetahNova\Abstracts;
 use App\Nova\Resource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Waygou\XheetahUtils\Models\SvgIcon;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Titasgailius\SearchRelations\SearchesRelations;
 use Waygou\NovaUx\Components\Cards\ResourceHeaderCard;
-use Waygou\XheetahUtils\Models\SvgIcon;
 
 abstract class XheetahResource extends Resource
 {
@@ -78,7 +78,7 @@ abstract class XheetahResource extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        if (empty($request->get('orderBy')) && !empty(static::$indexDefaultOrder)) {
+        if (empty($request->get('orderBy')) && ! empty(static::$indexDefaultOrder)) {
             $query->getQuery()->orders = [];
 
             return $query->orderBy(key(static::$indexDefaultOrder), reset(static::$indexDefaultOrder));

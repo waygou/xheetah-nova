@@ -2,11 +2,11 @@
 
 namespace Waygou\XheetahNova\Resources;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\HasOne;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasOne;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
@@ -64,7 +64,7 @@ class Vehicle extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.common.courier'),
                 function () {
-                    if (!is_null($this->user)) {
+                    if (! is_null($this->user)) {
                         return "<span via-resource='vehicles' via-resource-id='{$this->id}' class='text-left'><span><a href='/nova/resources/couriers/{$this->user->id}' class='no-underline dim text-primary font-bold'>{$this->user->name}</a></span></span>";
                     }
 

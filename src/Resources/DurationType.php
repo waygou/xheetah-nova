@@ -2,12 +2,12 @@
 
 namespace Waygou\XheetahNova\Resources;
 
-use Illuminate\Http\Request;
-use Laraning\NovaTimeField\TimeField;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Select;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\HasMany;
+use Laraning\NovaTimeField\TimeField;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
 class DurationType extends XheetahResource

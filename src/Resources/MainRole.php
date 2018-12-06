@@ -2,9 +2,9 @@
 
 namespace Waygou\XheetahNova\Resources;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\ID;
 use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
