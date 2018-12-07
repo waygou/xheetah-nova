@@ -20,6 +20,11 @@ return [
         'plural'   => 'Deliveries',
     ],
 
+    'delivery_statuses' => [
+        'singular' => 'Delivery Status',
+        'plural'   => 'Delivery Statuses',
+    ],
+
     'delivery_types' => [
         'singular' => 'Delivery Type',
         'plural'   => 'Delivery Types',
