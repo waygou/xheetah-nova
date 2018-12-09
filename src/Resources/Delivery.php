@@ -162,6 +162,11 @@ class Delivery extends XheetahResource
                  ),
 
             Text::make(
+                trans('xheetah-nova::fields.common.floor_number'),
+                'origin_floor_number'
+            ),
+
+            Text::make(
                 trans('xheetah-nova::fields.deliveries.postal_code'),
                 'origin_postal_code'
             ),
@@ -212,6 +217,11 @@ class Delivery extends XheetahResource
                      'destination_related_address',
                      'Waygou\Xheetah\Restrictions\AddressRestriction@loadPlace'
                  ),
+
+            Text::make(
+                trans('xheetah-nova::fields.common.floor_number'),
+                'destination_floor_number'
+            ),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.postal_code'),
