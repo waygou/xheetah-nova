@@ -163,7 +163,7 @@ class Delivery extends XheetahResource
                  )->hideFromIndex(),
 
             Text::make(trans('xheetah-nova::fields.common.from'), function () {
-                return $this->origin_address . ', ' . $this->origin_floor_number . ', ' . $this->origin_locality . ', ' . $this->origin_city;
+                return $this->origin_address.', '.$this->origin_floor_number.', '.$this->origin_locality.', '.$this->origin_city;
             })->onlyOnIndex(),
 
             Text::make(
@@ -223,7 +223,7 @@ class Delivery extends XheetahResource
                  )->hideFromIndex(),
 
             Text::make(trans('xheetah-nova::fields.common.to'), function () {
-                return $this->destination_address . ', ' . $this->destination_floor_number . ', ' . $this->destination_locality . ', ' . $this->destination_city;
+                return $this->destination_address.', '.$this->destination_floor_number.', '.$this->destination_locality.', '.$this->destination_city;
             })->onlyOnIndex(),
 
             Text::make(
