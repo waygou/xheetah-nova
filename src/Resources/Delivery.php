@@ -35,12 +35,12 @@ class Delivery extends XheetahResource
     public static $searchRelations = [
         'client'      => ['name'],
         'costCenter'  => ['name'],
-        'serviceType' => ['name'],
+        'deliveryType' => ['name'],
         'creator'     => ['name'],
         'courier'     => ['name'],
     ];
 
-    public static $with = ['client', 'costCenter', 'serviceType', 'creator', 'courier'];
+    public static $with = ['client', 'costCenter', 'deliveryType', 'creator', 'courier'];
 
     public static function group()
     {
@@ -76,11 +76,10 @@ class Delivery extends XheetahResource
                 'costCenter',
                 \Waygou\XheetahNova\Resources\CostCenter::class
             )->nullable()
-             ->startEmpty()
              ->affectedBy(
                  'client',
                  'Waygou\Xheetah\Restrictions\CostCenterRestriction@restrictToClient'
-             ),
+             )->hideFromIndex(),
 
             Topic::make(
                 trans('xheetah-nova::topics.deliveries.delivery_type')
@@ -89,24 +88,25 @@ class Delivery extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.deliveries.created_by'),
                 'created_by'
-            )->readonly()
+            )->hideFromIndex()
+             ->readonly()
              ->onCreateDefault(Auth::user()->name),
 
             BelongsTo::make(
                 trans('xheetah-nova::fields.deliveries.delivery_type'),
-                'serviceType',
+                'deliveryType',
                 \Waygou\XheetahNova\Resources\DeliveryType::class
             ),
 
             Boolean::make(
                 trans('xheetah-nova::fields.deliveries.with_return'),
                 'with_return'
-            ),
+            )->help(trans('xheetah-nova::help.deliveries.with_return')),
 
             Textarea::make(
                 trans('xheetah-nova::fields.deliveries.notes'),
                 'notes'
-            ),
+            )->hideFromIndex(),
 
             Topic::make(
                 trans('xheetah-nova::topics.deliveries.related_addresses')
@@ -116,7 +116,7 @@ class Delivery extends XheetahResource
                 trans('xheetah-nova::fields.deliveries.origin_related_address'),
                 'origin_related_address'
             )->nullable()
-             ->startEmpty()
+             ->hideFromIndex()
              ->affectedBy(
                  'client',
                  'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
@@ -124,27 +124,27 @@ class Delivery extends XheetahResource
              ->affectedBy(
                  'costCenter',
                  'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
-             ),
+             )->help(trans('xheetah-nova::help.deliveries.related_address')),
 
             Select::make(
                 trans('xheetah-nova::fields.deliveries.destination_related_address'),
                 'destination_related_address'
             )
-                  ->nullable()
-                  ->startEmpty()
-                  ->affectedBy(
-                      'client',
-                      'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
-                  )
-                  ->affectedBy(
-                      'costCenter',
-                      'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
-                  ),
+            ->nullable()
+            ->hideFromIndex()
+            ->affectedBy(
+                'client',
+                'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
+            )
+            ->affectedBy(
+                'costCenter',
+                'Waygou\Xheetah\Restrictions\AddressRestriction@preloadAddresses'
+            )->help(trans('xheetah-nova::help.deliveries.related_address')),
 
             Topic::make(
                 trans('xheetah-nova::topics.deliveries.origin_location')
             )
-                  ->withSVG('location'),
+            ->withSVG('location'),
 
             Place::make(
                 trans('xheetah-nova::fields.deliveries.address'),
@@ -156,47 +156,51 @@ class Delivery extends XheetahResource
                  ->countryCode('origin_country_code')
                  ->country('origin_country')
                  ->map('origin_map')
+                 ->hideFromIndex()
                  ->affectedBy(
                      'origin_related_address',
                      'Waygou\Xheetah\Restrictions\AddressRestriction@loadPlace'
-                 ),
+                 )->hideFromIndex(),
+
+            Text::make(trans('xheetah-nova::fields.common.from'), function () {
+                return $this->origin_address . ', ' . $this->origin_floor_number . ', ' . $this->origin_locality . ', ' . $this->origin_city;
+            })->onlyOnIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.common.floor_number'),
                 'origin_floor_number'
-            ),
+            )->hideFromIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.postal_code'),
                 'origin_postal_code'
-            ),
+            )->hideFromIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.city'),
                 'origin_city'
-            ),
+            )->hideFromIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.locality'),
                 'origin_locality'
-            ),
+            )->hideFromIndex(),
 
             Country::make(
                 trans('xheetah-nova::fields.deliveries.country'),
                 'origin_country_code'
-            )
-                ->onlyOnForms(),
+            )->onlyOnForms(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.country'),
                 'origin_country'
-            )
-                ->exceptOnForms(),
+            )->hidden()
+             ->hideFromIndex(),
 
             Map::make(
                 trans('xheetah-nova::fields.deliveries.address_location'),
                 'origin_map'
-            ),
+            )->hideFromIndex(),
 
             Topic::make(
                 trans('xheetah-nova::topics.deliveries.destination_location')
@@ -216,27 +220,31 @@ class Delivery extends XheetahResource
                  ->affectedBy(
                      'destination_related_address',
                      'Waygou\Xheetah\Restrictions\AddressRestriction@loadPlace'
-                 ),
+                 )->hideFromIndex(),
+
+            Text::make(trans('xheetah-nova::fields.common.to'), function () {
+                return $this->destination_address . ', ' . $this->destination_floor_number . ', ' . $this->destination_locality . ', ' . $this->destination_city;
+            })->onlyOnIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.common.floor_number'),
                 'destination_floor_number'
-            ),
+            )->hideFromIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.postal_code'),
                 'destination_postal_code'
-            ),
+            )->hideFromIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.city'),
                 'destination_city'
-            ),
+            )->hideFromIndex(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.locality'),
                 'destination_locality'
-            ),
+            )->hideFromIndex(),
 
             Country::make(
                 trans('xheetah-nova::fields.deliveries.country'),
@@ -247,13 +255,22 @@ class Delivery extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.deliveries.country'),
                 'destination_country'
-            )
-                ->exceptOnForms(),
+            )->hidden()
+             ->hideFromIndex(),
 
             Map::make(
                 trans('xheetah-nova::fields.deliveries.address_location'),
                 'destination_map'
-            ),
+            )->hideFromIndex(),
+
+            BelongsTo::make(
+                trans('xheetah-nova::fields.deliveries.assigned_to'),
+                'courier',
+                \Waygou\XheetahNova\Resources\Courier::class
+            )->nullable()
+             ->canSee(function ($request) {
+                 return user_is(['super-admin', 'employee-coordination', 'admin', 'employee-standard']);
+             }),
 
             Topic::make(
                 trans('xheetah-nova::topics.deliveries.merchandise_information')
@@ -263,22 +280,23 @@ class Delivery extends XheetahResource
             Number::make(
                 trans('xheetah-nova::fields.deliveries.volumes_qty'),
                 'volumes_qty'
-            ),
+            )->hideFromIndex(),
 
             Number::make(
                 trans('xheetah-nova::fields.deliveries.volumes_total_weight'),
                 'volumes_qty'
-            ),
+            )->hideFromIndex(),
 
             Textarea::make(
                 trans('xheetah-nova::fields.deliveries.merchandise_description'),
                 'merchandise_description'
-            ),
+            )->hideFromIndex(),
 
             Number::make(
                 trans('xheetah-nova::fields.deliveries.price_request'),
                 'price_request'
-            )->step(0.01),
+            )->hideFromIndex()
+             ->step(0.01),
 
             Topic::make(
                 trans('xheetah-nova::topics.deliveries.schedule_information')
@@ -289,12 +307,13 @@ class Delivery extends XheetahResource
                 trans('xheetah-nova::fields.deliveries.schedule_type'),
                 'schedule_type'
             )->options(['asap' => 'As soon as possible', 'future' => 'To start later'])
+             ->hideFromIndex()
              ->displayUsingLabels(),
 
             DateTime::make(
                 trans('xheetah-nova::fields.deliveries.schedule_planned_at'),
                 'schedule_planned_at'
-            ),
+            )->hideFromIndex(),
 
             Textarea::make(
                 trans('xheetah-nova::fields.deliveries.comments_courier'),
