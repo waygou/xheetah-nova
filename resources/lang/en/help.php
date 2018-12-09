@@ -17,7 +17,7 @@ return [
 
     'deliveries' => [
         'with_return' => 'If checked, it will automatically created a delivery in opposite direction, with the same exact information. You can later edit the delivery before it is assigned to a Courier.',
-        'related_address' => 'You can select an address here to pre-fill the address fields below.'
+        'related_address' => 'You can select an address here to pre-fill the address fields below.',
     ],
 
     'client_users' => [
