@@ -33,11 +33,12 @@ class Delivery extends XheetahResource
     ];
 
     public static $searchRelations = [
-        'client'      => ['name'],
-        'costCenter'  => ['name'],
-        'deliveryType' => ['name'],
-        'creator'     => ['name'],
-        'courier'     => ['name'],
+        'client'         => ['name'],
+        'costCenter'     => ['name'],
+        'deliveryType'   => ['name'],
+        'creator'        => ['name'],
+        'courier'        => ['name'],
+        'deliveryStatus' => ['name'],
     ];
 
     public static $with = ['client', 'costCenter', 'deliveryType', 'creator', 'courier'];
@@ -91,6 +92,12 @@ class Delivery extends XheetahResource
             )->hideFromIndex()
              ->readonly()
              ->onCreateDefault(Auth::user()->name),
+
+            BelongsTo::make(
+                trans('xheetah-nova::fields.common.status'),
+                'deliveryStatus',
+                \Waygou\XheetahNova\Resources\DeliveryStatus::class
+            ),
 
             BelongsTo::make(
                 trans('xheetah-nova::fields.deliveries.delivery_type'),
@@ -249,8 +256,7 @@ class Delivery extends XheetahResource
             Country::make(
                 trans('xheetah-nova::fields.deliveries.country'),
                 'destination_country_code'
-            )
-                ->onlyOnForms(),
+            )->onlyOnForms(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.country'),
@@ -294,7 +300,7 @@ class Delivery extends XheetahResource
 
             Number::make(
                 trans('xheetah-nova::fields.deliveries.price_request'),
-                'price_request'
+                'price_to_request'
             )->hideFromIndex()
              ->step(0.01),
 

@@ -18,6 +18,7 @@ use Waygou\XheetahNova\Resources\CostCenter;
 use Waygou\XheetahNova\Resources\VehicleType;
 use Waygou\XheetahNova\Resources\DeliveryType;
 use Waygou\XheetahNova\Resources\DurationType;
+use Waygou\XheetahNova\Resources\DeliveryStatus;
 
 class XheetahNova extends Tool
 {
@@ -42,6 +43,7 @@ class XheetahNova extends Tool
             VehicleType::class,
             DeliveryType::class,
             Delivery::class,
+            DeliveryStatus::class,
             Test::class,
         ]);
     }
