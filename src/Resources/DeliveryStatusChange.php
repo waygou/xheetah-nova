@@ -4,8 +4,6 @@ namespace Waygou\XheetahNova\Resources;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\HasMany;
-use Waygou\NovaUx\Components\Fields\Text;
 use Waygou\NovaUx\Components\Fields\BelongsTo;
 use Waygou\XheetahNova\Abstracts\XheetahResource;
 
@@ -28,7 +26,7 @@ class DeliveryStatusChange extends XheetahResource
 
     public function subtitle()
     {
-        return "";
+        return '';
     }
 
     public function fields(Request $request)
