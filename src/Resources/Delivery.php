@@ -24,7 +24,7 @@ class Delivery extends XheetahResource
 {
     public static $model = \Waygou\Xheetah\Models\Delivery::class;
 
-    public static $title = 'name';
+    public static $title = 'deliveryResume';
 
     public static $displayInNavigation = true;
 

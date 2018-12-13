@@ -107,10 +107,9 @@ class ClientUser extends XheetahResource
                 trans('xheetah-nova::resources.profiles.plural'),
                 'profiles',
                 \Waygou\SurveyorNova\Resources\Profile::class
-            )
-                         ->canSee(function ($request) {
-                             return user_is(['super-admin', 'admin']);
-                         }),
+            )->canSee(function ($request) {
+                return user_is(['super-admin', 'admin']);
+            }),
 
             BelongsTo::make(
                 trans('xheetah-nova::resources.clients.singular'),
