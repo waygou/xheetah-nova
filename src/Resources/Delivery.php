@@ -29,7 +29,14 @@ class Delivery extends XheetahResource
     public static $displayInNavigation = true;
 
     public static $search = [
-        'origin_address', 'destination_address',
+        'origin_address',
+        'origin_city',
+        'origin_locality',
+        'origin_postal_code',
+        'destination_address',
+        'destination_city',
+        'destination_locality',
+        'destination_postal_code',
     ];
 
     public static $searchRelations = [
@@ -167,7 +174,7 @@ class Delivery extends XheetahResource
                  ->affectedBy(
                      'origin_related_address',
                      'Waygou\Xheetah\Restrictions\AddressRestriction@loadPlace'
-                 )->hideFromIndex(),
+                 )->rules('required'),
 
             Text::make(trans('xheetah-nova::fields.common.from'), function () {
                 return $this->origin_address.', '.$this->origin_floor_number.', '.$this->origin_locality.', '.$this->origin_city;
@@ -191,12 +198,14 @@ class Delivery extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.deliveries.locality'),
                 'origin_locality'
-            )->hideFromIndex(),
+            )->hideFromIndex()
+             ->rules('required'),
 
             Country::make(
                 trans('xheetah-nova::fields.deliveries.country'),
                 'origin_country_code'
-            )->onlyOnForms(),
+            )->onlyOnForms()
+             ->rules('required'),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.country'),
@@ -227,7 +236,7 @@ class Delivery extends XheetahResource
                  ->affectedBy(
                      'destination_related_address',
                      'Waygou\Xheetah\Restrictions\AddressRestriction@loadPlace'
-                 )->hideFromIndex(),
+                 )->rules('required'),
 
             Text::make(trans('xheetah-nova::fields.common.to'), function () {
                 return $this->destination_address.', '.$this->destination_floor_number.', '.$this->destination_locality.', '.$this->destination_city;
@@ -251,12 +260,14 @@ class Delivery extends XheetahResource
             Text::make(
                 trans('xheetah-nova::fields.deliveries.locality'),
                 'destination_locality'
-            )->hideFromIndex(),
+            )->hideFromIndex()
+             ->rules('required'),
 
             Country::make(
                 trans('xheetah-nova::fields.deliveries.country'),
                 'destination_country_code'
-            )->onlyOnForms(),
+            )->rules('required')
+             ->onlyOnForms(),
 
             Text::make(
                 trans('xheetah-nova::fields.deliveries.country'),
@@ -313,6 +324,7 @@ class Delivery extends XheetahResource
                 trans('xheetah-nova::fields.deliveries.schedule_type'),
                 'schedule_type'
             )->options(['asap' => 'As soon as possible', 'future' => 'To start later'])
+             ->rules('required')
              ->hideFromIndex()
              ->displayUsingLabels(),
 
