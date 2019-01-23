@@ -32,7 +32,7 @@ class Game extends GamestageResource
      * @var array
      */
     public static $search = [
-        'name'
+        'name',
     ];
 
     /**

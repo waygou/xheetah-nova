@@ -22,7 +22,7 @@ class GamestageNova extends Tool
             User::class,
             Game::class,
             Genre::class,
-            Company::class
+            Company::class,
         ]);
     }
 
