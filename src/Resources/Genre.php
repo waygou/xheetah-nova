@@ -6,7 +6,6 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\HasMany;
 use Waygou\GamestageNova\Abstracts\GamestageResource;
 
@@ -32,7 +31,7 @@ class Genre extends GamestageResource
      * @var array
      */
     public static $search = [
-        'name'
+        'name',
     ];
 
     /**
@@ -54,7 +53,7 @@ class Genre extends GamestageResource
                 'Games',
                 'games',
                 \Waygou\GamestageNova\Resources\Game::class
-            )
+            ),
         ];
     }
 

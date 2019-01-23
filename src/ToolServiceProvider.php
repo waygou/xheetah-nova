@@ -3,7 +3,6 @@
 namespace Waygou\GamestageNova;
 
 use Laravel\Nova\Nova;
-use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Waygou\GamestageNova\Http\Middleware\Authorize;
