@@ -6,18 +6,18 @@ use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\BelongsTo;
 use Waygou\GamestageNova\Abstracts\GamestageResource;
 
-class User extends GamestageResource
+class Game extends GamestageResource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \Waygou\Gamestage\Models\User::class;
+    public static $model = \Waygou\Gamestage\Models\Game::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -32,7 +32,7 @@ class User extends GamestageResource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'name'
     ];
 
     /**
@@ -46,22 +46,41 @@ class User extends GamestageResource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make(),
-
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+            Number::make('Release Year', 'release_year'),
 
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:6')
-                ->updateRules('nullable', 'string', 'min:6'),
+            BelongsTo::make(
+                'Genre',
+                'genre',
+                \Waygou\GamestageNova\Resources\Genre::class
+            ),
+
+            BelongsTo::make(
+                'Developer',
+                'developer',
+                \Waygou\GamestageNova\Resources\Company::class
+            )->searchable(),
+
+            BelongsTo::make(
+                'Publisher',
+                'publisher',
+                \Waygou\GamestageNova\Resources\Company::class
+            )->searchable(),
+
+            BelongsTo::make(
+                'Re-releaser',
+                're_releaser',
+                \Waygou\GamestageNova\Resources\Company::class
+            )->searchable(),
+
+            BelongsTo::make(
+                'Licencer',
+                'licencer',
+                \Waygou\GamestageNova\Resources\Company::class
+            )->searchable(),
         ];
     }
 

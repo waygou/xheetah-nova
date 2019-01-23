@@ -1,8 +1,8 @@
 <?php
 
-namespace Waygou\XheetahNova\Http\Middleware;
+namespace Waygou\GamestageNova\Http\Middleware;
 
-use Waygou\XheetahNova\XheetahNova;
+use Waygou\GamestageNova\GamestageNova;
 
 class Authorize
 {
@@ -16,6 +16,6 @@ class Authorize
      */
     public function handle($request, $next)
     {
-        return resolve(XheetahNova::class)->authorize($request) ? $next($request) : abort(403);
+        return resolve(GamestageNova::class)->authorize($request) ? $next($request) : abort(403);
     }
 }
